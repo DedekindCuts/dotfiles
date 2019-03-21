@@ -1,0 +1,22 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"API Blueprint",
+		"LaTeX-cwl",
+		"LaTeXing",
+		"LaTeXTools",
+		"MarkdownPreview",
+		"Monokai Extended",
+		"nRepeat",
+		"Package Control",
+		"R-Box",
+		"R-snippets",
+		"SendText",
+		"SublimeREPL",
+		"Theme - Flatgrammer"
+	]
+}

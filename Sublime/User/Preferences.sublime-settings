@@ -1,0 +1,27 @@
+{
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "<",
+			"selector": "text.html"
+		},
+		{
+			"characters": "\\",
+			"selector": "text.tex.latex"
+		}
+	],
+	"color_scheme": "Packages/User/sublime-tomorrow-theme-master/Tomorrow-Night-Eighties.tmTheme",
+	"font_face": "Monaco",
+	"font_size": 12.0,
+	"ignored_packages":
+	[
+		"Dracula Color Scheme",
+		"SendCode",
+		"Vintage"
+	],
+	"mdpopups.sublime_user_lang_map":
+	{
+	},
+	"mdpopups.use_sublime_highlighter": true,
+	"theme": "Flatgrammer.sublime-theme"
+}

@@ -11,12 +11,15 @@ use work VS code settings
     add instructions to bootstrap file to symlink settings folder and install extensions
         ~/Library/Application\ Support/Code/User
             snippets
+                sudo ln -sfF /Users/nicklarsen/Desktop/new-dotfiles/.vscode-settings/snippets /Users/nicklarsen/Library/Application\ Support/Code/User
             keybindings.json
+                sudo ln -sfF /Users/nicklarsen/Desktop/new-dotfiles/.vscode-settings/keybindings.json /Users/nicklarsen/Library/Application\ Support/Code/User
             settings.json
+                sudo ln -sfF /Users/nicklarsen/Desktop/new-dotfiles/.vscode-settings/settings.json /Users/nicklarsen/Library/Application\ Support/Code/User
         ~/.vscode
             extensions (just install these; don't copy the folder)
                 code --list-extensions > <repo>/.vscode-settings/extensions-list.txt
-                <repo>/.vscode-settings/extensions-list.txt | xargs -L 1 code-insiders --install-extension
+                cat <repo>/.vscode-settings/extensions-list.txt | xargs -L 1 code --install-extension
 
 add brewfile, bootstrap file, etc.
 
@@ -35,3 +38,11 @@ change VS Code default shell arguments to not run login shell (and therefore not
 macos
   look over again to confirm desired settings changes
   see if any might need to be different on different machines
+
+improve README
+more ideas: https://github.com/dotphiles/dotphiles
+
+Programs unavailable through Homebrew, Cask, MAS:
+Audacity
+antivirus (Sophos, AVG)?
+VS Code?

@@ -1,0 +1,55 @@
+<snippet>
+	<content><![CDATA[
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in,footskip=0.25in]{geometry}
+
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{problem}{Problem}
+
+\newcommand{\name}{Nick Larsen}
+\newcommand{\topology}{Math 554 - Swenson}
+\newcommand{\algebra}{Math 473 - Humphries}
+\newcommand{\hw}{${2:assignment}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\I}{\mathbb{I}}
+
+\newenvironment{solution}
+  {\begin{proof}[Solution]}
+  {\end{proof}}
+
+\newenvironment{subproof}[1][\proofname]
+  {\renewcommand{\qedsymbol}{\$\blacksquare\$}\begin{proof}[#1]}
+  {\end{proof}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\begin{document}
+
+\noindent \textbf{\name}\\\\
+\textbf{${1:class}}\\\\
+\textbf{\today}\\\\
+\textbf{\hw}
+
+$0
+
+\end{document}
+]]></content>
+	<tabTrigger>assignment</tabTrigger>
+	<scope>text.tex.latex</scope>
+</snippet>

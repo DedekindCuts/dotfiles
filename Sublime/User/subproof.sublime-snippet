@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+\begin{subproof}
+	$0
+\end{subproof}
+]]></content>
+	<tabTrigger>subproof</tabTrigger>
+	<scope>text.tex.latex</scope>
+</snippet>
