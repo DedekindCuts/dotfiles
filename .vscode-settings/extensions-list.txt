@@ -1,0 +1,12 @@
+donjayamanne.githistory
+eamodio.gitlens
+GrapeCity.gc-excelviewer
+Ikuyadeu.r
+Mikhail-Arkhipov.r
+ms-python.anaconda-extension-pack
+ms-python.python
+ms-vscode.Theme-TomorrowKit
+neuron.neuron-IPE
+PKief.material-icon-theme
+redhat.vscode-yaml
+zhuangtongfa.Material-theme

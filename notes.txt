@@ -8,8 +8,17 @@ cite https://github.com/DoomHammer/dotfiles
 
 
 use work VS code settings
+    add instructions to bootstrap file to symlink settings folder and install extensions
+        ~/Library/Application\ Support/Code/User
+            snippets
+            keybindings.json
+            settings.json
+        ~/.vscode
+            extensions (just install these; don't copy the folder)
+                code --list-extensions > <repo>/.vscode-settings/extensions-list.txt
+                <repo>/.vscode-settings/extensions-list.txt | xargs -L 1 code-insiders --install-extension
 
-add brewfile, install file, etc.
+add brewfile, bootstrap file, etc.
 
 plan:
     bootstrap
@@ -17,6 +26,12 @@ plan:
         download and install things and apply in correct order
 
 
+look into adding ssh key(s) (with encryption - only to private repo)
 
+add .veracitydata (?) (for backup reasons)
 
 change VS Code default shell arguments to not run login shell (and therefore not change path) (?)
+
+macos
+  look over again to confirm desired settings changes
+  see if any might need to be different on different machines
