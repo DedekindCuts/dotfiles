@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# easily show/hide hidden files
+alias showHiddenFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
+# use GNU ls (with colors) instead of standard
+if which gls >/dev/null; then
+    alias ls="gls --color=auto"
+fi

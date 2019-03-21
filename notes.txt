@@ -1,0 +1,22 @@
+Notes
+
+cite https://github.com/DoomHammer/dotfiles
+    dircolors
+    gitconfig
+    shell-aliases
+    shell-common
+
+
+use work VS code settings
+
+add brewfile, install file, etc.
+
+plan:
+    bootstrap
+        ask whether work or home computer; set class accordingly
+        download and install things and apply in correct order
+
+
+
+
+change VS Code default shell arguments to not run login shell (and therefore not change path) (?)

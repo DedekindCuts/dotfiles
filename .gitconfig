@@ -1,25 +1,17 @@
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
 [user]
 	name = Nick Larsen
-	email = n.larsen@veracityfa.com
+	email = nick.larsen100@gmail.com
 [core]
 	excludesfile = /Users/n.larsen/.gitignore_global
-	editor = "subl -n -w"
 [color]
 	ui = auto
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[commit]
-	template = /Users/n.larsen/.stCommitMsg
-[http]
-	postBuffer = 111157286400
+[github]
+	user = DedekindCuts
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
 [fetch]
 	prune = true
+[include]
+	path = gitconfig.local
