@@ -93,10 +93,10 @@ if "$SETUP_TYPE" = "personal"; then
 				mas upgrade
 				break;;
 			"Install all programs" )
-				brew bundle --file=Brewfile
+				brew bundle --file=$HOME/.Brewfile
 				break;;
 			"Selectively update or install programs" )
-				(brew bundle list --taps --file=Brewfile | while read -r tap ; do
+				(brew bundle list --taps --file=$HOME/.Brewfile | while read -r tap ; do
 					echo "Tap $tap?"
 					select answer in "Yes" "No"
 					do
@@ -109,7 +109,7 @@ if "$SETUP_TYPE" = "personal"; then
 						esac
 					done <&4
 				done) 4<&0
-				(brew bundle list --brews --file=Brewfile | while read -r brew ; do
+				(brew bundle list --brews --file=$HOME/.Brewfile | while read -r brew ; do
 					echo "Install/upgrade $brew?"
 					select answer in "Yes" "No"
 					do
@@ -126,7 +126,7 @@ if "$SETUP_TYPE" = "personal"; then
 						esac
 					done <&4
 				done) 4<&0
-				(brew bundle list --casks --file=Brewfile | while read -r cask ; do
+				(brew bundle list --casks --file=$HOME/.Brewfile | while read -r cask ; do
 					echo "Install/upgrade $cask?"
 					select answer in "Yes" "No"
 					do
@@ -223,17 +223,46 @@ elif "$SETUP_TYPE" = "veracity"; then
 		conda update conda >/dev/null
 		echo "$(tput setaf 2)Conda installed and up to date.$(tput setaf 7)"
 	fi
+
+	# prompt to install VS Code
+	echo "Before continuing, VS Code must be installed if it is not already."
+	echo "(https://code.visualstudio.com/download)"
+	read -n1 -rsp $'Press any key to continue once VS Code is installed.\n'
 else
 	echo "$(tput setaf 1)Invalid setup type$(tput setaf 7)"
 fi
 
+# prompt to install VS code if it is not found
+while [[ ! -d $HOME/Library/Application\ Support/Code ]]; do
+	echo "$HOME/Library/Application Support/Code directory not found."
+	echo "Before continuing, VS Code must be installed."
+	echo "(https://code.visualstudio.com/download)"
+	read -n1 -rsp $'Press any key to continue once VS Code is installed, or CTRL+C to exit.\n'
+done
+
 ## apply custom VS Code settings
-sudo ln -sfF $HOME/.vscode-settings/snippets $HOME/Library/Application\ Support/Code/User
-sudo ln -sfF $HOME/.vscode-settings/keybindings.json $HOME/Library/Application\ Support/Code/User
-sudo ln -sfF $HOME/.vscode-settings/settings.json $HOME/Library/Application\ Support/Code/User
+ln -sfF $HOME/.vscode-settings/snippets $HOME/Library/Application\ Support/Code/User
+ln -sfF $HOME/.vscode-settings/keybindings.json $HOME/Library/Application\ Support/Code/User
+ln -sfF $HOME/.vscode-settings/settings.json $HOME/Library/Application\ Support/Code/User
 
 ## install VS Code extensions
 cat $HOME/.vscode-settings/extensions-list.txt | xargs -L 1 code --install-extension
+
+# for Veracity setup, prompt to install other programs before applying MacOS settings and restart
+if "$SETUP_TYPE" = "veracity"; then
+	echo "Recommended programs to install (if not installed already):"
+	echo "1Password: https://1password.com/downloads"
+	echo "Box Sync: https://community.box.com/t5/Using-Box-Sync/Installing-Box-Sync/ta-p/85"
+	echo "DB Browser for SQLite: https://sqlitebrowser.org/dl/"
+	echo "Google Chrome: https://www.google.com/chrome/"
+	echo "GoToMeeting: https://www.gotomeeting.com/features/mac-windows-linux#"
+	echo "Microsoft Office: https://www.office.com/"
+	echo "Slack: https://slack.com/downloads/mac"
+	echo "SonicWall Mobile Connect: App Store"
+	echo "Spectacle: https://www.spectacleapp.com/"
+	echo "Wrike: https://www.wrike.com/apps/mobile-and-desktop/desktop-app/"
+	read -n1 -rsp $'Press any key to continue.\n'
+fi
 
 # source .macos file to apply system-wide settings and preferences
 echo "Would you like to apply custom macOS settings? (Requires password and restart)"
