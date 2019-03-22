@@ -47,6 +47,7 @@ look for Firefox options for .macos
 (later) find out if there is a way to get a notification when the repo is dirty and needs to be pushed
 
 (later) change VS Code default shell arguments to not run login shell (and therefore not change path) (?)
+    https://code.visualstudio.com/docs/editor/integrated-terminal
 
 Programs unavailable through Homebrew, Cask, MAS:
 Audacity
