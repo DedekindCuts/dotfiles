@@ -1,0 +1,21 @@
+# Database paths
+base.fa18data.path <- "/Users/n.larsen/Projects/PMA265 Historical Rates Analyses/fa-18-historical-data/"
+#base.fa18datafiles.path <- "/Users/n.larsen/Projects/PMA265 Historical Rates Analyses/fa-18-historical-data-files/" #This is the old database path, use Box Sync instead
+base.fa18datafiles.path <- "/Users/n.larsen/Box Sync/PRJ-PMA265/Working Materials/Historical Data Files/"
+
+# Rates Analyses paths
+base.fa18attrition.path <- "/Users/n.larsen/Projects/PMA265 Historical Rates Analyses/fa18-strike-attrition/"
+base.fa18dataquality.path <- "/Users/n.larsen/Projects/PMA265 Historical Rates Analyses/fa-18-data-quality-analysis/"
+base.fa18drillanalysis.path <- "/Users/n.larsen/Projects/PMA265 Historical Rates Analyses/fa-18-drill-analysis/"
+base.fa18frs.path <- "/Users/n.larsen/Projects/PMA265 Historical Rates Analyses/fa-18-frs-analysis/"
+base.fa18mcutil.path <- "/Users/n.larsen/Projects/PMA265 Historical Rates Analyses/fa-18-mc-based-utilization/"
+base.fa18prep.path <- "/Users/n.larsen/Projects/PMA265 Historical Rates Analyses/fa-18-prep-analysis/"
+base.fa18unskedoor.path <- "/Users/n.larsen/Projects/PMA265 Historical Rates Analyses/fa-18-unscheduled-oor/"
+base.fa18utilization.path <- "/Users/n.larsen/Projects/PMA265 Historical Rates Analyses/fa-18-utilization/"
+
+#Forensics path
+base.fa18forensics.path <- "/Users/n.larsen/Projects/PMA265 Forensics/forensics/"
+base.fa18fid.path <- "/Users/n.larsen/Box Sync/PRJ-PMA265/Program Data/FID files/"
+
+#Abacus base URL
+abacus.base.url <- "http://127.0.0.1:8085"

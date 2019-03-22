@@ -1,9 +1,5 @@
 Notes
 
-add .veracitydata (?) (for backup reasons)
-get rid of alternate .bashrc and just check if conda is installed
-    consider another file (.shell_env?) to set things like MINICONDA PATH that are referenced in multiple files, so that they only have to be set in one place
-        (like a config script)
 add option to use a different user when invoking sudo in .macos
     and change back if necessary?
 edit Brewfile; change to .Brewfile (change references in bootstrap)
@@ -28,6 +24,9 @@ improve README, citations, etc.
 more ideas: https://github.com/dotphiles/dotphiles, yadm dotfiles list
 
 LATER
+
+command for getting list of VS Code installed extensions:
+    code --list-extensions > <repo>/.vscode-settings/extensions-list.txt
 
 figure out virtualenv (for more than Python?)
     if not as good, consider using Homebrew + Conda (look for conflicts)

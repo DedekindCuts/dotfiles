@@ -1,7 +1,22 @@
 #!/bin/bash
 
-#custom prompt
-source ~/.bash_prompt
+#
+# Customization
+#
+
+# set environment variables
+. $HOME/.shell_env
+
+# set custom aliases
+. $HOME/.shell-aliases
+
+# custom prompt
+. $HOME/.bash_prompt
+
+# enable colorized terminal output
+if which gdircolors >/dev/null; then
+    test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
+fi
 
 # Store multiline commands as one line.
 shopt -s cmdhist
@@ -10,22 +25,11 @@ shopt -s cmdhist
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# set preferred text editor
-export EDITOR="code -n -w"
-export GIT_EDITOR=$EDITOR
-export VISUAL=$EDITOR
-
-# set custom aliases
-test -r ~/.shell-aliases && . ~/.shell-aliases
-
-# enable colorized terminal output
-if which gdircolors >/dev/null; then
-    test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
-fi
+#
+# Set PATH
+#
 
 PATH_LOCATIONS=( "/usr/local/bin" "/usr/bin" "/bin" "/usr/local/sbin" "/usr/sbin" "/sbin" )
-
-# set PATH
 for x in "${PATH_LOCATIONS[@]}"; do
 	if echo $PATH | grep -q $x; then 
 		:
@@ -33,6 +37,16 @@ for x in "${PATH_LOCATIONS[@]}"; do
 		PATH=$PATH:$x
 	fi
 done
+
+# add VS Code to PATH to allow launching (using `code`) from the terminal
+# (if it's installed and not already in PATH)
+if [[ -e "/Applications/Visual Studio Code.app" ]]; then
+	if echo $PATH | grep -q $x; then
+		:
+	else
+		PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+	fi
+fi
 
 # check if X11 is installed; if so, add it to PATH if it's not already
 if which xdpyinfo >/dev/null; then
@@ -53,7 +67,7 @@ if which tex >/dev/null; then
 fi
 
 # check if conda is installed; if so, add it to PATH if it's not already
-if which conda >/dev/null; then
+if [[ -d $MINICONDA_PATH ]]; then
 	for x in "$MINICONDA_PATH/bin" "$MINICONDA_PATH/condabin"; do
 		if echo $PATH | grep -q $x; then
 			:
@@ -70,23 +84,26 @@ if which conda >/dev/null; then
 	fi
 	# conda init code
 
-	## added by Miniconda3 4.5.12 installer
-	## >>> conda init >>>
-	## !! Contents within this block are managed by 'conda init' !!
-	#__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/nicklarsen/miniconda/bin/conda' shell.bash hook 2> /dev/null)"
-	#if [ $? -eq 0 ]; then
-	#    \eval "$__conda_setup"
-	#else
-	#    if [ -f "/Users/nicklarsen/miniconda/etc/profile.d/conda.sh" ]; then
-	#        . "/Users/nicklarsen/miniconda/etc/profile.d/conda.sh"
-	#        CONDA_CHANGEPS1=false conda activate base
-	#    else
-	#        \export PATH="/Users/nicklarsen/miniconda/bin:$PATH"
-	#    fi
-	#fi
-	#unset __conda_setup
-	## <<< conda init <<<
+	# >>> conda init >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	__conda_setup="$(CONDA_REPORT_ERRORS=false '$MINICONDA_PATH/bin/conda' shell.bash hook 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+	    \eval "$__conda_setup"
+	else
+	    if [ -f "$MINICONDA_PATH/etc/profile.d/conda.sh" ]; then
+	        . "$MINICONDA_PATH/etc/profile.d/conda.sh"
+	        #CONDA_CHANGEPS1=false conda activate base
+	    else
+	        \export PATH="$MINICONDA_PATH/bin:$PATH"
+	    fi
+	fi
+	unset __conda_setup
+	# <<< conda init <<<
 fi
+
+#
+# Local overrides
+#
 
 # run local bashrc if there is one
 test -r ~/.bashrc.local && . ~/.bashrc.local
