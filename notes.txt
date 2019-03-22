@@ -1,48 +1,53 @@
 Notes
 
+add .veracitydata (?) (for backup reasons)
+get rid of alternate .bashrc and just check if conda is installed
+    consider another file (.shell_env?) to set things like MINICONDA PATH that are referenced in multiple files, so that they only have to be set in one place
+        (like a config script)
+add option to use a different user when invoking sudo in .macos
+    and change back if necessary?
+edit Brewfile; change to .Brewfile (change references in bootstrap)
+    brew cask install visual-studio-code
+    make separate Brewfiles?
+        basics + optional (give option to install all optional or go one-by-one)
+optionally disable automatically installing system updates in .macos (for Veracity installs)
+get snippets from Sublime folder and add to VS Code
+keep Sublime settings in Dropbox instead of this repo (?)
+need a way to have referenced programs/files/folders (VS Code, Sublime (?)) exist before they are referenced in bootstrap
+    for Veracity installation (Brewfile will install them for Personal)
+        consider installing bare-bones Homebrew (mostly for Cask)
+            talk to Ian?
+make public and private versions of dotfiles
+look into adding ssh key(s) (with encryption - only to private repo)
 cite https://github.com/DoomHammer/dotfiles
     dircolors
     gitconfig
     shell-aliases
     shell-common
+improve README, citations, etc.
+more ideas: https://github.com/dotphiles/dotphiles, yadm dotfiles list
 
+LATER
 
-use work VS code settings
-    add instructions to bootstrap file to symlink settings folder and install extensions
-        ~/Library/Application\ Support/Code/User
-            snippets
-                sudo ln -sfF /Users/nicklarsen/Desktop/new-dotfiles/.vscode-settings/snippets /Users/nicklarsen/Library/Application\ Support/Code/User
-            keybindings.json
-                sudo ln -sfF /Users/nicklarsen/Desktop/new-dotfiles/.vscode-settings/keybindings.json /Users/nicklarsen/Library/Application\ Support/Code/User
-            settings.json
-                sudo ln -sfF /Users/nicklarsen/Desktop/new-dotfiles/.vscode-settings/settings.json /Users/nicklarsen/Library/Application\ Support/Code/User
-        ~/.vscode
-            extensions (just install these; don't copy the folder)
-                code --list-extensions > <repo>/.vscode-settings/extensions-list.txt
-                cat <repo>/.vscode-settings/extensions-list.txt | xargs -L 1 code --install-extension
+figure out virtualenv (for more than Python?)
+    if not as good, consider using Homebrew + Conda (look for conflicts)
+        Homebrew for cask and for general-use packages (GNU tools, etc.)
+        Conda for package management between projects
 
-add brewfile, bootstrap file, etc.
+(later) make sure this is all user-specific, not system-wide (as much as possible)
+    most likely conflict is .macos
+(later) create separate "one-and-done" script to install yadm and apply dotfiles (for a new machine)
+    install yadm (with git? or however possible)
+    need to set yadm class after installing yadm but before cloning dotfiles repo
+        yadm config local.class Personal
+        yadm config local.class Veracity
 
-plan:
-    bootstrap
-        ask whether work or home computer; set class accordingly
-        download and install things and apply in correct order
+look for Firefox options for .macos
 
+(later) find out if there is a way to get a notification when the repo is dirty and needs to be pushed
 
-look into adding ssh key(s) (with encryption - only to private repo)
-
-add .veracitydata (?) (for backup reasons)
-
-change VS Code default shell arguments to not run login shell (and therefore not change path) (?)
-
-macos
-  look over again to confirm desired settings changes
-  see if any might need to be different on different machines
-
-improve README
-more ideas: https://github.com/dotphiles/dotphiles
+(later) change VS Code default shell arguments to not run login shell (and therefore not change path) (?)
 
 Programs unavailable through Homebrew, Cask, MAS:
 Audacity
 antivirus (Sophos, AVG)?
-VS Code?
