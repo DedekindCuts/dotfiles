@@ -1,20 +1,11 @@
 Notes
 
-add option to use a different user when invoking sudo in .macos
-    and change back if necessary?
-edit Brewfile; change to .Brewfile (change references in bootstrap)
-    brew cask install visual-studio-code
-    make separate Brewfiles?
-        basics + optional (give option to install all optional or go one-by-one)
-optionally disable automatically installing system updates in .macos (for Veracity installs)
+look into adding ssh key(s) (with encryption - only to private repo)
+consider not including r and python in personal Brewfile (test to see if there are any conflicts with conda installed)
+consider just putting conda init code at the end of .bash_profile (see if it causes any problems on a machine without conda)
+make public and private versions of dotfiles
 get snippets from Sublime folder and add to VS Code
 keep Sublime settings in Dropbox instead of this repo (?)
-need a way to have referenced programs/files/folders (VS Code, Sublime (?)) exist before they are referenced in bootstrap
-    for Veracity installation (Brewfile will install them for Personal)
-        consider installing bare-bones Homebrew (mostly for Cask)
-            talk to Ian?
-make public and private versions of dotfiles
-look into adding ssh key(s) (with encryption - only to private repo)
 cite https://github.com/DoomHammer/dotfiles
     dircolors
     gitconfig
@@ -23,7 +14,18 @@ cite https://github.com/DoomHammer/dotfiles
 improve README, citations, etc.
 more ideas: https://github.com/dotphiles/dotphiles, yadm dotfiles list
 
+WORKFLOW
+
+download yadm (using git clone? or however possible)
+set yadm class
+    yadm config local.class Personal
+    yadm config local.class Veracity
+    etc.
+yadm clone this repo; yadm *should* take care of the rest
+
 LATER
+
+look into using Brew cask on Veracity computer
 
 command for getting list of VS Code installed extensions:
     code --list-extensions > <repo>/.vscode-settings/extensions-list.txt

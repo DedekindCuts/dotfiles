@@ -82,7 +82,6 @@ if [[ -d $MINICONDA_PATH ]]; then
 	if [[ "$TERM_PROGRAM" = "vscode" ]] && ! (echo $PATH | grep -q "^$MINICONDA_PATH/bin"); then
 	    PATH="$MINICONDA_PATH/bin:$PATH"
 	fi
-	# conda init code
 
 	# >>> conda init >>>
 	# !! Contents within this block are managed by 'conda init' !!
