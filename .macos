@@ -6,6 +6,14 @@
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
+# Give option to switch to an admin user for Veracity setup
+if $SETUP_TYPE = "veracity"; then
+	read -p "Please enter an admin username: " VERACITY_ADMIN
+	# switch to an admin user
+	su -m $VERACITY_ADMIN
+	echo "Please enter the admin password again (for sudo commands)"
+fi
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -311,8 +319,12 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
 
-#Kill affected applications
+if $SETUP_TYPE = "veracity"; then
+	# switch back from admin user
+	exit
+fi
 
+#Kill affected applications
 for app in "Activity Monitor" \
 	"Address Book" \
 	"Calendar" \
