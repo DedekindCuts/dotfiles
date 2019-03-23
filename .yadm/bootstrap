@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get custom environment variables (MINICONDA_PATH in particular)
-. $HOME/.shell_env
+. $HOME/.shell/.shell-env
 
 # URL of Miniconda .sh installer
 MINICONDA_INSTALLER="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh"
@@ -48,7 +48,7 @@ if [[ "$SETUP_TYPE" == "personal" ]]; then
 	if brew ls --versions git >/dev/null; then
 		# echo "$(tput setaf 2)Git already installed.$(tput setaf 7)"
 		# echo "Updating Git..."
-		if brew outdated | grep git; then
+		if brew outdated | grep git >/dev/null; then
 			brew upgrade git >/dev/null
 		else
 			:
@@ -96,10 +96,10 @@ if [[ "$SETUP_TYPE" == "personal" ]]; then
 				mas upgrade
 				break;;
 			"Install all programs" )
-				brew bundle --file=$HOME/.Brewfile
+				brew bundle --file=$HOME/.brew/.Brewfile
 				break;;
 			"Selectively update or install programs" )
-				(brew bundle list --taps --file=$HOME/.Brewfile | while read -r tap ; do
+				(brew bundle list --taps --file=$HOME/.brew/.Brewfile | while read -r tap ; do
 					echo "Tap $tap?"
 					select answer in "Yes" "No"
 					do
@@ -112,7 +112,7 @@ if [[ "$SETUP_TYPE" == "personal" ]]; then
 						esac
 					done <&4
 				done) 4<&0
-				(brew bundle list --brews --file=$HOME/.Brewfile | while read -r brew ; do
+				(brew bundle list --brews --file=$HOME/.brew/.Brewfile | while read -r brew ; do
 					echo "Install/upgrade $brew?"
 					select answer in "Yes" "No"
 					do
@@ -129,7 +129,7 @@ if [[ "$SETUP_TYPE" == "personal" ]]; then
 						esac
 					done <&4
 				done) 4<&0
-				(brew bundle list --casks --file=$HOME/.Brewfile | while read -r cask ; do
+				(brew bundle list --casks --file=$HOME/.brew/.Brewfile | while read -r cask ; do
 					echo "Install/upgrade $cask?"
 					select answer in "Yes" "No"
 					do
@@ -148,7 +148,7 @@ if [[ "$SETUP_TYPE" == "personal" ]]; then
 				done) 4<&0
 				# silently install GNU grep if not already installed (GNU grep is required for extracting the mas ids and names from the mas_list file)
 				(if brew ls --versions grep > /dev/null; then :; else brew install grep &> /dev/null; fi
-				cat $HOME/.mas_list | while read -r mas ; do
+				cat $HOME/.brew/.mas-list | while read -r mas ; do
 					id="$(echo $mas | ggrep -oP '^\d+')"
 					name="$(echo $mas | ggrep -oP '(?<=\h)[\w\h\d-:]*')"
 					echo "Install/upgrade $name?"
@@ -273,7 +273,7 @@ select answer in "Yes" "No"
 do
 	case $answer in
 		Yes )
-			. ~/.macos
+			. $HOME/.macos-settings/.macos
 			break;;
 		No )
 			break;;

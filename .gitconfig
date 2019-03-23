@@ -2,7 +2,7 @@
 	name = Nick Larsen
 	email = nick.larsen100@gmail.com
 [core]
-	excludesfile = /Users/n.larsen/.gitignore_global
+	excludesfile = $HOME/.git-settings/.gitignore_global
 [color]
 	ui = auto
 [github]
@@ -14,4 +14,4 @@
 [fetch]
 	prune = true
 [include]
-	path = gitconfig.local
+	path = $HOME/.git-settings/.gitconfig.local

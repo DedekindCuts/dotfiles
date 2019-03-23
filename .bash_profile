@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # run .bashrc if it exists
-[[ -r ~/.bashrc ]] && . ~/.bashrc
+[[ -r $HOME/.shell/.bashrc ]] && . $HOME/.shell/.bashrc

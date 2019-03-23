@@ -5,17 +5,17 @@
 #
 
 # set environment variables
-. $HOME/.shell_env
+. $HOME/.shell/.shell-env
 
 # set custom aliases
-. $HOME/.shell-aliases
+. $HOME/.shell/.shell-aliases
 
 # custom prompt
-. $HOME/.bash_prompt
+. $HOME/.shell/.bash_prompt
 
 # enable colorized terminal output
 if which gdircolors >/dev/null; then
-    test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
+    test -r $HOME/.shell/.dircolors && eval "$(gdircolors -b $HOME/.shell/.dircolors)" || eval "$(gdircolors -b)"
 fi
 
 # Store multiline commands as one line.
@@ -105,4 +105,4 @@ fi
 #
 
 # run local bashrc if there is one
-test -r ~/.bashrc.local && . ~/.bashrc.local
+test -r $HOME/.shell/.bashrc-local && . $HOME/.shell/.bashrc-local
