@@ -28,7 +28,7 @@ else
 	echo "$(tput setaf 2)Installed.$(tput setaf 7)"
 fi
 
-if "$SETUP_TYPE" = "personal"; then
+if [[ "$SETUP_TYPE" == "personal" ]]; then
 	# check if Homebrew is installed and install if not
 	if which brew >/dev/null; then
 		# echo "$(tput setaf 2)Homebrew already installed.$(tput setaf 7)"
@@ -210,7 +210,7 @@ if "$SETUP_TYPE" = "personal"; then
 		esac
 	done
 
-elif "$SETUP_TYPE" = "veracity"; then
+elif [[ "$SETUP_TYPE" == "veracity" ]]; then
 	# install conda
 	if which conda >/dev/null; then
 		echo "Installing Conda..."
@@ -249,7 +249,7 @@ ln -sfF $HOME/.vscode-settings/settings.json $HOME/Library/Application\ Support/
 cat $HOME/.vscode-settings/extensions-list.txt | xargs -L 1 code --install-extension
 
 # for Veracity setup, prompt to install other programs before applying MacOS settings and restart
-if "$SETUP_TYPE" = "veracity"; then
+if [[ "$SETUP_TYPE" == "veracity" ]]; then
 	echo "Recommended programs to install (if not installed already):"
 	echo "1Password: https://1password.com/downloads"
 	echo "Box Sync: https://community.box.com/t5/Using-Box-Sync/Installing-Box-Sync/ta-p/85"
