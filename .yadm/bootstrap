@@ -14,9 +14,11 @@ do
 	case $answer in
 		"Personal" )
 			SETUP_TYPE="personal"
+			yadm config local.class Personal
 			break;;
 		"Work (Veracity)" )
 			SETUP_TYPE="veracity"
+			yadm config local.class Veracity
 			break;;
 	esac
 done
