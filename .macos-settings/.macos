@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Almost entirely copied from Mathias Bynens' dotfiles: https://github.com/mathiasbynens/dotfiles
+# see https://mths.be/macos
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change

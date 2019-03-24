@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Almost entirely copied from Mathias Bynens' dotfiles: https://github.com/mathiasbynens/dotfiles
+# see https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
 
 # Shell prompt based on the Solarized Dark theme.
 # Screenshot: http://i.imgur.com/EkEtphC.png
