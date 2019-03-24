@@ -10,17 +10,17 @@ You can see examples of other dotfiles [here](https://dotfiles.github.io), and e
 
 ### This repository
 My dotfiles include: 
-* [shell customizations](.shell) (including aliases, PATH settings, and a customized prompt and color scheme)
-* [git settings](.gitconfig)
-* [macOS settings](.macos-settings/.macos) (thanks to [Mathias Bynens](https://github.com/mathiasbynens/dotfiles))
-* [Homebrew](https://brew.sh) [Brewfiles](.brew) for easy installation of desired programs (including App Store apps through [MAS](https://github.com/mas-cli/mas))
-* [VS Code](https://code.visualstudio.com/) [settings](.vscode-settings), custom keybindings, snippets, and installed extensions
-* [R](https://www.r-project.org/) [settings](.Rprofile)
-* a [bootstrap](.yadm/bootstrap) script for installing from the Brewfiles and applying the macOS and VS Code settings
+* [shell customizations](../.shell) (including aliases, PATH settings, and a customized prompt and color scheme)
+* [git settings](../.gitconfig)
+* [macOS settings](../.macos-settings/.macos) (thanks to [Mathias Bynens](https://github.com/mathiasbynens/dotfiles))
+* [Homebrew](https://brew.sh) [Brewfiles](../.brew) for easy installation of desired programs (including App Store apps through [MAS](https://github.com/mas-cli/mas))
+* [VS Code](https://code.visualstudio.com/) [settings](../.vscode-settings), custom keybindings, snippets, and installed extensions
+* [R](https://www.r-project.org/) [settings](../.Rprofile)
+* a [bootstrap](../.yadm/bootstrap) script for installing from the Brewfiles and applying the macOS and VS Code settings
 
 ## Workflow
 Assuming you don't already have yadm installed:
-1. [Install yadm](XXXXXXXXXX)
+1. [Install yadm](https://yadm.io/docs/install)
 2. Clone this repository using yadm: 
 
 ```bash
@@ -28,4 +28,4 @@ yadm clone git@github.com:DedekindCuts/new-dotfiles.git --bootstrap
 ```
 
 ## Other
-[License](.github/LICENSE)
+[License](LICENSE)
