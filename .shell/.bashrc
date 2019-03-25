@@ -41,7 +41,7 @@ done
 # add VS Code to PATH to allow launching (using `code`) from the terminal
 # (if it's installed and not already in PATH)
 if [[ -e "/Applications/Visual Studio Code.app" ]]; then
-	if echo $PATH | grep -q $x; then
+	if echo $PATH | grep -q "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"; then
 		:
 	else
 		PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"

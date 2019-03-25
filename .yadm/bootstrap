@@ -230,7 +230,7 @@ elif [[ "$SETUP_TYPE" == "veracity" ]]; then
 	fi
 
 	# prompt to install VS Code
-	echo "Before continuing, VS Code must be installed if it is not already."
+	echo "Before continuing, VS Code must be installed if it is not already." # make yellow
 	echo "(https://code.visualstudio.com/download)"
 	read -n1 -rsp $'Press any key to continue once VS Code is installed.\n'
 else
@@ -248,7 +248,7 @@ done
 # add VS Code to PATH to allow launching (using `code`) from the terminal
 # (if it's installed and not already in PATH)
 if [[ -e "/Applications/Visual Studio Code.app" ]]; then
-	if echo $PATH | grep -q $x; then
+	if echo $PATH | grep -q "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"; then
 		:
 	else
 		PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -268,7 +268,7 @@ cat $HOME/.vscode-settings/extensions-list.txt | xargs -L 1 code --install-exten
 
 # for Veracity setup, prompt to install other programs before applying MacOS settings and restart
 if [[ "$SETUP_TYPE" == "veracity" ]]; then
-	echo "Recommended programs to install (if not installed already):"
+	echo "Recommended programs to install (if not installed already):" # make yellow
 	echo "1Password: https://1password.com/downloads"
 	echo "Box Sync: https://community.box.com/t5/Using-Box-Sync/Installing-Box-Sync/ta-p/85"
 	echo "DB Browser for SQLite: https://sqlitebrowser.org/dl/"
