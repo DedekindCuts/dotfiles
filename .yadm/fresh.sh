@@ -27,7 +27,7 @@ done
 
 # create /usr/local/bin if it doesn't exist already
 if [[ ! -d /usr/local/bin ]]; then
-  if [[ $LOGNAME != $USER ]]; then
+  if [[ $ADMIN_USERNAME != $USER ]]; then
 		su $ADMIN_USERNAME -c 'sudo mkdir /usr/local/bin'
 	else
 		sudo mkdir /usr/local/bin
@@ -42,7 +42,7 @@ else
 fi
 
 # then download and install yadm in /usr/local/bin
-if [[ $LOGNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]]; then
 	su $ADMIN_USERNAME -c 'sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm'
 else
 	sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm

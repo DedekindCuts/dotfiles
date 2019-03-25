@@ -9,7 +9,7 @@ osascript -e 'tell application "System Preferences" to quit'
 # Give option to switch to an admin user for Veracity setup
 if [[ $SETUP_TYPE = "veracity" ]]; then
 	read -p "Please enter an admin username: " ADMIN_USERNAME
-	"Please enter the admin password when requested."
+	echo "Please enter the admin password when requested."
 fi
 
 # # Ask for the administrator password upfront
@@ -21,7 +21,7 @@ fi
 ######
 
 # Disable the sound effects on boot
-if [[ $LOGNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]]; then
 	su $ADMIN_USERNAME -c 'sudo nvram SystemAudioVolume=" "'
 else
 	sudo nvram SystemAudioVolume=" "
@@ -57,7 +57,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
-if [[ $LOGNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]]; then
 	su $ADMIN_USERNAME -c 'sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName'
 else
 	sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
@@ -97,14 +97,14 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
 
 # Show language menu in the top right corner of the boot screen
-if [[ $LOGNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]]; then
 	su $ADMIN_USERNAME -c 'sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true'
 else
 	sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 fi
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-if [[ $LOGNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]]; then
 	su $ADMIN_USERNAME -c 'sudo systemsetup -settimezone "America/Denver" > /dev/null'
 else
 	sudo systemsetup -settimezone "America/Denver" > /dev/null
@@ -182,7 +182,7 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 chflags nohidden ~/Library
 
 # Show the /Volumes folder
-if [[ $LOGNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]]; then
 	su $ADMIN_USERNAME -c 'sudo chflags nohidden /Volumes'
 else
 	sudo chflags nohidden /Volumes
