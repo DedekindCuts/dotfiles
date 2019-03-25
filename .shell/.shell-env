@@ -6,4 +6,4 @@ GIT_EDITOR=$EDITOR
 VISUAL=$EDITOR
 
 # set location for conda installation, if necessary
-MINICONDA_PATH="$HOME/miniconda"
+MINICONDA_PATH="$HOME/miniconda3"

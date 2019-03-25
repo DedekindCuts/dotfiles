@@ -19,9 +19,16 @@ My dotfiles include:
 * a [bootstrap](../.yadm/bootstrap) script for installing from the Brewfiles and applying the macOS and VS Code settings
 
 ## Workflow
-Assuming you don't already have yadm installed:
-1. [Install yadm](https://yadm.io/docs/install)
-2. Clone this repository using yadm: 
+For a fresh install on a new computer, use the [one-and-done install script](../.yadm/fresh.sh) that will install yadm and use it to set everything up:
+
+```bash
+bash <(curl -L https://raw.github.com/DedekindCuts/new-dotfiles/master/.yadm/fresh.sh)
+```
+
+Otherwise:
+1. [Install yadm](https://yadm.io/docs/install) (assuming it's not already installed)
+2. Remove any currently-existing dotfiles that may cause conflicts
+3. Clone this repository using yadm: 
 
 ```bash
 yadm clone git@github.com:DedekindCuts/new-dotfiles.git --bootstrap
