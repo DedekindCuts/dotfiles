@@ -217,7 +217,7 @@ if [[ "$SETUP_TYPE" == "personal" ]]; then
 
 elif [[ "$SETUP_TYPE" == "veracity" ]]; then
 	# install conda
-	if which conda >/dev/null; then
+	if ! which conda >/dev/null; then
 		echo "Installing Conda..."
 		echo "NOTE: "
 		curl -fsS $MINICONDA_INSTALLER -o $HOME/Downloads/miniconda.sh
