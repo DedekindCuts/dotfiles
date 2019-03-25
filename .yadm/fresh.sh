@@ -20,16 +20,18 @@ do
 			break;;
 		"No" )
 			read -p "Please enter an admin username: " ADMIN_USERNAME
-	    # switch to an admin user
-	    su -m $ADMIN_USERNAME
-	    echo "Please enter the admin password again (for sudo commands)"
+			echo "Please enter the admin password when requested."
 			break;;
 	esac
 done
 
 # create /usr/local/bin if it doesn't exist already
 if [[ ! -d /usr/local/bin ]]; then
-  sudo mkdir /usr/local/bin
+  if [[ $LOGNAME != $USER ]]; then
+		su $ADMIN_USERNAME -c 'sudo mkdir /usr/local/bin'
+	else
+		sudo mkdir /usr/local/bin
+	fi
 fi
 
 # add /usr/local/bin to PATH if it isn't there already
@@ -40,11 +42,10 @@ else
 fi
 
 # then download and install yadm in /usr/local/bin
-sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm
-
-# return to the original user if it was changed
-[[ if $LOGNAME != $USER ]]; then
-  exit
+if [[ $LOGNAME != $USER ]]; then
+	su $ADMIN_USERNAME -c 'sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm'
+else
+	sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm
 fi
 
 # finally, use yadm to set up dotfiles
