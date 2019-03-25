@@ -9,15 +9,17 @@ MINICONDA_INSTALLER="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOS
 # prompt for class of machine
 echo "Which kind of setup would you like to do?"
 select answer in "Personal" \
-	"Work (Veracity)";
+	"Veracity";
 do
 	case $answer in
 		"Personal" )
-			SETUP_TYPE="personal"
+			SETUP_TYPE="Personal"
+			USER_PRIVILEGE_LEVEL="admin"
 			yadm config local.class Personal
 			break;;
-		"Work (Veracity)" )
-			SETUP_TYPE="veracity"
+		"Veracity" )
+			SETUP_TYPE="Veracity"
+			USER_PRIVILEGE_LEVEL="non-admin"
 			yadm config local.class Veracity
 			break;;
 	esac
@@ -33,7 +35,7 @@ else
 	echo "$(tput setaf 2)Installed.$(tput setaf 7)"
 fi
 
-if [[ "$SETUP_TYPE" == "personal" ]]; then
+if [[ "$SETUP_TYPE" == "Personal" ]]; then
 	# check if Homebrew is installed and install if not
 	if which brew >/dev/null; then
 		# echo "$(tput setaf 2)Homebrew already installed.$(tput setaf 7)"
@@ -215,7 +217,7 @@ if [[ "$SETUP_TYPE" == "personal" ]]; then
 		esac
 	done
 
-elif [[ "$SETUP_TYPE" == "veracity" ]]; then
+elif [[ "$SETUP_TYPE" == "Veracity" ]]; then
 	# install conda
 	if ! which conda >/dev/null; then
 		echo "Installing Conda..."
@@ -230,7 +232,7 @@ elif [[ "$SETUP_TYPE" == "veracity" ]]; then
 	fi
 
 	# prompt to install VS Code
-	echo "Before continuing, VS Code must be installed if it is not already." # make yellow
+	echo "$(tput setaf 3)Before continuing, VS Code must be installed if it is not already.$(tput setaf 7)" # make yellow
 	echo "(https://code.visualstudio.com/download)"
 	read -n1 -rsp $'Press any key to continue once VS Code is installed.\n'
 else
@@ -267,18 +269,18 @@ ln -sfF $HOME/.vscode-settings/settings.json $HOME/Library/Application\ Support/
 cat $HOME/.vscode-settings/extensions-list.txt | xargs -L 1 code --install-extension
 
 # for Veracity setup, prompt to install other programs before applying MacOS settings and restart
-if [[ "$SETUP_TYPE" == "veracity" ]]; then
-	echo "Recommended programs to install (if not installed already):" # make yellow
-	echo "1Password: https://1password.com/downloads"
-	echo "Box Sync: https://community.box.com/t5/Using-Box-Sync/Installing-Box-Sync/ta-p/85"
-	echo "DB Browser for SQLite: https://sqlitebrowser.org/dl/"
-	echo "Google Chrome: https://www.google.com/chrome/"
-	echo "GoToMeeting: https://www.gotomeeting.com/features/mac-windows-linux#"
-	echo "Microsoft Office: https://www.office.com/"
-	echo "Slack: https://slack.com/downloads/mac"
-	echo "SonicWall Mobile Connect: App Store"
-	echo "Spectacle: https://www.spectacleapp.com/"
-	echo "Wrike: https://www.wrike.com/apps/mobile-and-desktop/desktop-app/"
+if [[ "$SETUP_TYPE" == "Veracity" ]]; then
+	echo "$(tput setaf 3)Recommended programs to install (if not installed already):$(tput setaf 7)" # make yellow
+	echo -e "\t1Password: https://1password.com/downloads"
+	echo -e "\tBox Sync: https://community.box.com/t5/Using-Box-Sync/Installing-Box-Sync/ta-p/85"
+	echo -e "\tDB Browser for SQLite: https://sqlitebrowser.org/dl/"
+	echo -e "\tGoogle Chrome: https://www.google.com/chrome/"
+	echo -e "\tGoToMeeting: https://www.gotomeeting.com/features/mac-windows-linux#"
+	echo -e "\tMicrosoft Office: https://www.office.com/"
+	echo -e "\tSlack: https://slack.com/downloads/mac"
+	echo -e "\tSonicWall Mobile Connect: App Store"
+	echo -e "\tSpectacle: https://www.spectacleapp.com/"
+	echo -e "\tWrike: https://www.wrike.com/apps/mobile-and-desktop/desktop-app/"
 	read -n1 -rsp $'Press any key to continue.\n'
 fi
 

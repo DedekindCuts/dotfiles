@@ -1,6 +1,9 @@
 # one-and-done script for setting up dotfiles on a new computer
 # doesn't make any assumptions about installed programs
 
+# set the location of the dotfiles repo to clone from
+DOTFILES_REPO="https://github.com/DedekindCuts/new-dotfiles.git"
+
 # first install Xcode command line tools if they aren't already
 if type xcode-select >&- && xpath=$( xcode-select --print-path ) && test -d "${xpath}" && test -x "${xpath}"; then
 	echo "$(tput setaf 2)Xcode command line tools installed and up to date.$(tput setaf 7)"
@@ -19,14 +22,16 @@ do
 		"Yes" )
 			break;;
 		"No" )
-			read -p "Please enter an admin username: " ADMIN_USERNAME
-			echo "Please enter the admin password when requested."
+			read -p "Please enter an admin username or press CTRL+C to exit: " ADMIN_USERNAME
+			echo "The password for this admin username may be requested several times."
+			echo "Please enter the admin password each time it is requested."
 			break;;
 	esac
 done
 
 # create /usr/local/bin if it doesn't exist already
 if [[ ! -d /usr/local/bin ]]; then
+	echo "Creating /usr/local/bin..."
   if [[ $ADMIN_USERNAME != $USER ]]; then
 		su $ADMIN_USERNAME -c 'sudo mkdir /usr/local/bin'
 	else
@@ -42,6 +47,7 @@ else
 fi
 
 # then download and install yadm in /usr/local/bin
+echo "Installing yadm..."
 if [[ $ADMIN_USERNAME != $USER ]]; then
 	su $ADMIN_USERNAME -c 'sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm'
 else
@@ -50,4 +56,4 @@ fi
 
 # finally, use yadm to set up dotfiles
 cd $HOME
-yadm clone https://github.com/DedekindCuts/new-dotfiles.git
+yadm clone $DOTFILES_REPO --bootstrap

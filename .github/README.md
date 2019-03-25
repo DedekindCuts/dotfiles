@@ -18,7 +18,20 @@ My dotfiles include:
 * [R](https://www.r-project.org/) [settings](../.Rprofile)
 * a [bootstrap](../.yadm/bootstrap) script for installing from the Brewfiles and applying the macOS and VS Code settings
 
-## Workflow
+## Usage
+
+### Before proceeding
+These dotfiles are customized to my personal needs, and in some cases ([.gitconfig](../.gitconfig), for example) actually contain my personal information.
+This means that you should not simply clone these dotfiles as they are (unless you're me.)
+Instead, feel free to fork this repository and make changes according to your needs.
+I also recommend browsing other dotfiles repositories ([here](https://dotfiles.github.io) and [here](https://yadm.io/docs/examples)) for ideas and inspiration.
+
+If you do fork this repository, make the following changes AT MINIMUM before applying them:
+* Change the name, email, and GitHub username in [.gitconfig](../.gitconfig) and [.git-settings/.gitconfig.local](../.git-settings/.gitconfig.local##Veracity)
+* Change the language and text formats and timezone in [.macos-settings/.macos](../.macos-settings/.macos) as necessary
+* Change DOTFILES_REPO in [.yadm/fresh.sh](../.yadm/fresh.sh) to the url of your modified repository
+
+### Installation
 For a fresh install on a new computer, use the [one-and-done install script](../.yadm/fresh.sh) that will install yadm and use it to set everything up:
 
 ```bash

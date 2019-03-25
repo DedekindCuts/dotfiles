@@ -6,24 +6,44 @@
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
-# Give option to switch to an admin user for Veracity setup
-if [[ $SETUP_TYPE = "veracity" ]]; then
-	read -p "Please enter an admin username: " ADMIN_USERNAME
-	echo "Please enter the admin password when requested."
+# Give option to use an admin username and password for Veracity setup
+if [[ $USER_PRIVILEGE_LEVEL == "non-admin" ]]; then
+	echo "Some settings require admin privileges:"
+	echo -e "\tDisable the sound effects on boot"
+	echo -e "\tReveal IP address, hostname, OS version, etc. when clicking the clock in the login window"
+	echo -e "\tShow language menu in the top right corner of the boot screen"
+	echo -e "\tSet the timezone"
+	echo -e "\tShow the /Volumes folder"
+	echo "What would you like to do?"
+	select answer in "Only apply settings that do not require admin privileges" \
+		"Supply an admin username and password and apply all settings";
+	do
+		case $answer in
+			"Only apply settings that do not require admin privileges" )
+				USE_SUDO="false"
+				break;;
+			"Supply an admin username and password and apply all settings" )
+				USE_SUDO="true"
+				read -p "Please enter an admin username: " ADMIN_USERNAME
+				echo "The password for this admin username may be requested several times."
+				echo "Please enter the admin password each time it is requested."
+				break;;
+		esac
+	done
+else
+	# Ask for the administrator password upfront
+	sudo -v
+
+	# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+	USE_SUDO="true"
 fi
 
-# # Ask for the administrator password upfront
-# sudo -v
-# 
-# # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-######
-
 # Disable the sound effects on boot
-if [[ $ADMIN_USERNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo nvram SystemAudioVolume=" "'
-else
+elif [[ USE_SUDO == "true" ]]
 	sudo nvram SystemAudioVolume=" "
 fi
 
@@ -57,9 +77,9 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
-if [[ $ADMIN_USERNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName'
-else
+elif [[ USE_SUDO == "true" ]]
 	sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 fi
 
@@ -97,16 +117,16 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
 
 # Show language menu in the top right corner of the boot screen
-if [[ $ADMIN_USERNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true'
-else
+elif [[ USE_SUDO == "true" ]]
 	sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 fi
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-if [[ $ADMIN_USERNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo systemsetup -settimezone "America/Denver" > /dev/null'
-else
+elif [[ USE_SUDO == "true" ]]
 	sudo systemsetup -settimezone "America/Denver" > /dev/null
 fi
 
@@ -182,9 +202,9 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 chflags nohidden ~/Library
 
 # Show the /Volumes folder
-if [[ $ADMIN_USERNAME != $USER ]]; then
+if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo chflags nohidden /Volumes'
-else
+elif [[ USE_SUDO == "true" ]]
 	sudo chflags nohidden /Volumes
 fi
 

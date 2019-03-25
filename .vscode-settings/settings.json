@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/n.larsen/miniconda3/bin/python",
+    "python.pythonPath": "~/miniconda3/bin/python",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Tomorrow Night Eighties",
     "workbench.colorCustomizations": {
