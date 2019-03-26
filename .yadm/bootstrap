@@ -6,7 +6,7 @@ select profile in $(ls $HOME/.yadm/profiles);
 do
 	# get settings from profile
 	. "$HOME/.yadm/profiles/$profile"
-	break;;
+	break;
 done
 
 echo "Checking preliminaries..."
