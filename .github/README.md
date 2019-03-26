@@ -27,7 +27,7 @@ These dotfiles are customized to my personal needs.
 This means that you should not simply clone these dotfiles as they are (unless you're me.)
 Instead, feel free to fork this repository and make changes according to your needs.
 
-To make this easy (and also because sometimes I need different dotfile configurations for different situations), a large amount of customization can be done through [profiles][../.yadm/profiles]. 
+To make this easy (and also because sometimes I need different dotfile configurations for different situations), a large amount of customization can be done through [profiles](../.yadm/profiles). 
 These are shell scripts that set the [yadm class](https://yadm.io/docs/alternates#), specify whether to install certain tools (like Homebrew and Conda), and indicate whether the user has admin privileges.
 You can easily make one of these according to your own needs using the existing [profiles](../.yadm/profiles) as a template.
 
@@ -44,12 +44,12 @@ The recommended workflow for customizing these dotfiles is as follows:
     * if there are any files of which you may want to have different versions on different systems, then create a customized version with "##" and the yadm class name associated with that profile appended to the filename (for example, I have different versions of [.gitconfig-local](../.dotfiles/.git-settings) for personal and work use)
     * otherwise (if you want to change the file from what I have, but you will not want or need to have different versions on different systems), just edit the file as-is and don't include "##" or any class names in the filename (for example, I use the same [.bash_prompt](../.dotfiles/.shell/.bash_prompt) on all my machines)
 5. commit your changes to your forked repository
-6. follow the installation instructions below
+6. follow the [installation instructions](#installation) below
 
 I also recommend browsing other dotfiles repositories ([here](https://dotfiles.github.io) and [here](https://yadm.io/docs/examples)) for ideas and inspiration on how to further customize your dotfiles.
 
 ### Installation
-For a fresh install on a new computer, use the [fresh install script](../../.yadm/fresh.sh) that will install yadm and use it to set everything up:
+For a fresh install on a new computer, use the [fresh install script](../.yadm/fresh.sh) that will install yadm and use it to set everything up:
 
 ```bash
 # if you're me
@@ -73,4 +73,4 @@ yadm clone [url of your forked repository] --bootstrap
 ```
 
 ## Other
-[License](LICENSE.txt)
+[Licensed under the MIT License](LICENSE.txt)
