@@ -4,7 +4,9 @@
 alias showHiddenFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
-# use GNU ls (with colors) instead of standard
+# use GNU ls (with colors) instead of standard if available; otherwise, enable colors with normal ls
 if command -v gls >/dev/null; then
     alias ls="gls --color=auto"
+else
+    alias ls="ls -G"
 fi
