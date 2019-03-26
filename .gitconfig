@@ -8,3 +8,5 @@
     cmd = code --wait --diff $LOCAL $REMOTE
 [fetch]
 	prune = true
+[include]
+	path = ~/.git-settings/.gitconfig-local
