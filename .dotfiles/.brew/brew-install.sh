@@ -27,27 +27,29 @@ else
 	echo "$(tput setaf 2)Installed.$(tput setaf 7)"
 fi	
 
-# sign in to App Store
-echo "Signing in to App Store..."
+# sign in to App Store if MAS is being used
+if command -v mas >/dev/null; then
+	echo "Signing in to App Store..."
 
-# Workaround for mas signin bug
-until (mas account > /dev/null); do 
-	echo "$(tput setaf 3)Please sign in using the App Store app.$(tput setaf 7)" 
-	open -a "/Applications/App Store.app"
-	echo "$(tput setaf 3)Waiting for signin...$(tput setaf 7)"
+	# Workaround for mas signin bug
 	until (mas account > /dev/null); do 
-		sleep 3
+		echo "$(tput setaf 3)Please sign in using the App Store app.$(tput setaf 7)" 
+		open -a "/Applications/App Store.app"
+		echo "$(tput setaf 3)Waiting for signin...$(tput setaf 7)"
+		until (mas account > /dev/null); do 
+			sleep 3
+		done
 	done
-done
-##############################
+	##############################
 
-# Normal signin (uncomment if/when mas bug is resolved)
-# until (mas account > /dev/null); do
-#	mas signin $APPLE_ID &>/dev/null # will need to set APPLE_ID if this ever works
-# done
+	# Normal signin (uncomment if/when mas bug is resolved)
+	# until (mas account > /dev/null); do
+	#	mas signin $APPLE_ID &>/dev/null # will need to set APPLE_ID if this ever works
+	# done
 
-if (mas account > /dev/null); then
-	echo "$(tput setaf 2)Signed in.$(tput setaf 7)"
+	if (mas account > /dev/null); then
+		echo "$(tput setaf 2)Signed in.$(tput setaf 7)"
+	fi
 fi
 
 # prompt for type of install
@@ -60,9 +62,11 @@ do
 		"Quick update currently installed programs" )
 			brew upgrade
 			brew cask upgrade
-			mas upgrade
+			if command -v mas >/dev/null; then
+				mas upgrade
+			fi
 			break;;
-		"Install all programs" )
+		"Install all programs from Brewfile" )
 			brew bundle --file=$HOME/.dotfiles/.brew/.Brewfile
 			break;;
 		"Selectively update or install programs" )
@@ -113,32 +117,37 @@ do
 					esac
 				done <&4
 			done) 4<&0
-			# silently install GNU grep if not already installed (GNU grep is required for extracting the mas ids and names from the mas_list file)
-			(if brew ls --versions grep > /dev/null; then :; else brew install grep &> /dev/null; fi
-			cat $HOME/.dotfiles/.brew/.mas-list | while read -r mas ; do
-				id="$(echo $mas | ggrep -oP '^\d+')"
-				name="$(echo $mas | ggrep -oP '(?<=\h)[\w\h\d-:]*')"
-				echo "Install/upgrade $name?"
-				select answer in "Yes" "No"
-				do
-					case $answer in
-						Yes )
-							if mas list | grep "$id" &> /dev/null; then 
-								echo "Already installed; updating."
-							else 
-								mas install "$id"
-							fi
-							break;;
-						No )
-							break;;
-					esac
-				done <&4
-			done) 4<&0
+			# if MAS is being used, install MAS apps from mas-list
+			if command -v mas >/dev/null; then
+				# silently install GNU grep if not already installed (GNU grep is required for extracting the mas ids and names from the mas_list file)
+				(if brew ls --versions grep > /dev/null; then :; else brew install grep &> /dev/null; fi
+				cat $HOME/.dotfiles/.brew/.mas-list | while read -r mas ; do
+					id="$(echo $mas | ggrep -oP '^\d+')"
+					name="$(echo $mas | ggrep -oP '(?<=\h)[\w\h\d-:]*')"
+					echo "Install/upgrade $name?"
+					select answer in "Yes" "No"
+					do
+						case $answer in
+							Yes )
+								if mas list | grep "$id" &> /dev/null; then 
+									echo "Already installed; updating."
+								else 
+									mas install "$id"
+								fi
+								break;;
+							No )
+								break;;
+						esac
+					done <&4
+				done) 4<&0
+			fi
 			# upgrade all installed brews and casks (doing them individually gives an error for brews and uninstalls and reinstalls for casks)
 			echo "Updating..."
 			brew upgrade
 			brew cask upgrade
-			mas upgrade
+			if command -v mas >/dev/null; then
+				mas upgrade
+			fi
 			break;;
 	esac
 done
