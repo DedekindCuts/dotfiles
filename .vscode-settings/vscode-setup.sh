@@ -20,6 +20,8 @@ else
 	exit
 fi
 
+echo "Setting up VS Code..."
+
 ## apply custom VS Code settings
 ln -sfF "$HOME/.vscode-settings/snippets" "$HOME/Library/Application Support/Code/User"
 ln -sfF "$HOME/.vscode-settings/keybindings.json" "$HOME/Library/Application Support/Code/User"
