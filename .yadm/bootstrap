@@ -21,22 +21,22 @@ fi
 
 # install/update Homebrew and programs from Brewfile if desired
 if [[ "$USE_HOMEBREW" == "true" ]]; then
-	. "$HOME/.brew/brew-install.sh"
+	. "$HOME/.dotfiles/.brew/brew-install.sh"
 fi
 
 # install Conda if desired
 if [[ "$USE_CONDA" == "true" ]]; then
-	. "$HOME/.conda/conda-install.sh"
+	. "$HOME/.dotfiles/.conda/conda-install.sh"
 fi
 
 # install VS Code if not already and apply custom settings
-. "$HOME/.vscode-settings/vscode-setup.sh"
+. "$HOME/.dotfiles/.vscode-settings/vscode-setup.sh"
 
 # prompt to install any programs that must be manually installed
-if [[ -r "$HOME/.installs/manual" ]]; then
+if [[ -r "$HOME/.dotfiles/.installs/manual" ]]; then
 	IFS=";"
 	echo "$(tput setaf 3)Recommended programs to install (if not installed already):$(tput setaf 7)"
-	grep -v "^#" "$HOME/.installs/manual" | while read -r LINE; do 
+	grep -v "^#" "$HOME/.dotfiles/.installs/manual" | while read -r LINE; do 
 		read -ra SPLIT_LINE <<<"$LINE"
 		PROGRAM_NAME="${SPLIT_LINE[0]}"
 		PROGRAM_URL="${SPLIT_LINE[1]}"
@@ -52,7 +52,7 @@ select answer in "Yes" "No"
 do
 	case $answer in
 		Yes )
-			. "$HOME/.macos-settings/.macos"
+			. "$HOME/.dotfiles/.macos-settings/.macos"
 			break;;
 		No )
 			break;;

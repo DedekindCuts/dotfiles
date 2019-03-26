@@ -6,10 +6,5 @@ yadm config local.class Personal
 # whether to install Homebrew
 USE_HOMEBREW="true"
 
-# set git personal information
-git config --global user.name "Nick Larsen"
-git config --global user.email "nick.larsen100@gmail.com"
-git config --global github.user "DedekindCuts"
-
 # whether user who will be using this profile has admin (sudo) privileges
 USER_ADMIN_PRIVILEGE="true"

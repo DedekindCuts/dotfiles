@@ -13,7 +13,8 @@
     "terminal.integrated.cursorBlinking": true,
     "files.associations": {
         "*.Rmd": "markdown",
-        "*.rmd": "markdown"
+        "*.rmd": "markdown", 
+        ".gitconfig": "gitconfig"
     },
     "workbench.statusBar.feedback.visible": false,
     "workbench.panel.defaultLocation": "right",

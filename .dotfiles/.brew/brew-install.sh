@@ -63,10 +63,10 @@ do
 			mas upgrade
 			break;;
 		"Install all programs" )
-			brew bundle --file=$HOME/.brew/.Brewfile
+			brew bundle --file=$HOME/.dotfiles/.brew/.Brewfile
 			break;;
 		"Selectively update or install programs" )
-			(brew bundle list --taps --file=$HOME/.brew/.Brewfile | while read -r tap ; do
+			(brew bundle list --taps --file=$HOME/.dotfiles/.brew/.Brewfile | while read -r tap ; do
 				echo "Tap $tap?"
 				select answer in "Yes" "No"
 				do
@@ -79,7 +79,7 @@ do
 					esac
 				done <&4
 			done) 4<&0
-			(brew bundle list --brews --file=$HOME/.brew/.Brewfile | while read -r brew ; do
+			(brew bundle list --brews --file=$HOME/.dotfiles/.brew/.Brewfile | while read -r brew ; do
 				echo "Install/upgrade $brew?"
 				select answer in "Yes" "No"
 				do
@@ -96,7 +96,7 @@ do
 					esac
 				done <&4
 			done) 4<&0
-			(brew bundle list --casks --file=$HOME/.brew/.Brewfile | while read -r cask ; do
+			(brew bundle list --casks --file=$HOME/.dotfiles/.brew/.Brewfile | while read -r cask ; do
 				echo "Install/upgrade $cask?"
 				select answer in "Yes" "No"
 				do
@@ -115,7 +115,7 @@ do
 			done) 4<&0
 			# silently install GNU grep if not already installed (GNU grep is required for extracting the mas ids and names from the mas_list file)
 			(if brew ls --versions grep > /dev/null; then :; else brew install grep &> /dev/null; fi
-			cat $HOME/.brew/.mas-list | while read -r mas ; do
+			cat $HOME/.dotfiles/.brew/.mas-list | while read -r mas ; do
 				id="$(echo $mas | ggrep -oP '^\d+')"
 				name="$(echo $mas | ggrep -oP '(?<=\h)[\w\h\d-:]*')"
 				echo "Install/upgrade $name?"

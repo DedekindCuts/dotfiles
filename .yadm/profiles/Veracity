@@ -15,10 +15,5 @@ CONDA_INSTALLER="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x8
 # desired location for Conda installation
 CONDA_DEST="$HOME/miniconda3"
 
-# set git personal information
-git config --global user.name "Nick Larsen"
-git config --global user.email "n.larsen@veracityfa.com"
-git config --global github.user "DedekindCuts"
-
 # whether user who will be using this profile has admin (sudo) privileges
 USER_ADMIN_PRIVILEGE="false"

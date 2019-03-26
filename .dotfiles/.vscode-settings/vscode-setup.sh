@@ -23,9 +23,9 @@ fi
 echo "Setting up VS Code..."
 
 ## apply custom VS Code settings
-ln -sfF "$HOME/.vscode-settings/snippets" "$HOME/Library/Application Support/Code/User"
-ln -sfF "$HOME/.vscode-settings/keybindings.json" "$HOME/Library/Application Support/Code/User"
-ln -sfF "$HOME/.vscode-settings/settings.json" "$HOME/Library/Application Support/Code/User"
+ln -sfF "$HOME/.dotfiles/.vscode-settings/snippets" "$HOME/Library/Application Support/Code/User"
+ln -sfF "$HOME/.dotfiles/.vscode-settings/keybindings.json" "$HOME/Library/Application Support/Code/User"
+ln -sfF "$HOME/.dotfiles/.vscode-settings/settings.json" "$HOME/Library/Application Support/Code/User"
 
 ## install VS Code extensions
-cat "$HOME/.vscode-settings/extensions-list.txt" | xargs -L 1 code --install-extension
+cat "$HOME/.dotfiles/.vscode-settings/extensions-list.txt" | xargs -L 1 code --install-extension
