@@ -5,14 +5,14 @@
 #
 # Lines beginning with # will be ignored
 #
-# Name; URL
-1Password; https://1password.com/downloads
-Box Sync; https://community.box.com/t5/Using-Box-Sync/Installing-Box-Sync/ta-p/85
-DB Browser for SQLite; https://sqlitebrowser.org/dl/
-Google Chrome; https://www.google.com/chrome/
-GoToMeeting; https://www.gotomeeting.com/features/mac-windows-linux#
-Microsoft Office; https://www.office.com/
-Slack; https://slack.com/downloads/mac
-SonicWall Mobile Connect; App Store
-Spectacle; https://www.spectacleapp.com/
-Wrike; https://www.wrike.com/apps/mobile-and-desktop/desktop-app/
+# Name;URL
+1Password;https://1password.com/downloads
+Box Sync;https://community.box.com/t5/Using-Box-Sync/Installing-Box-Sync/ta-p/85
+DB Browser for SQLite;https://sqlitebrowser.org/dl/
+Google Chrome;https://www.google.com/chrome/
+GoToMeeting;https://www.gotomeeting.com/features/mac-windows-linux#
+Microsoft Office;https://www.office.com/
+Slack;https://slack.com/downloads/mac
+SonicWall Mobile Connect;App Store
+Spectacle;https://www.spectacleapp.com/
+Wrike;https://www.wrike.com/apps/mobile-and-desktop/desktop-app/
