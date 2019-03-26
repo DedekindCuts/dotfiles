@@ -14,7 +14,7 @@
 . $HOME/.shell/.bash_prompt
 
 # enable colorized terminal output
-if which gdircolors >/dev/null; then
+if command -v gdircolors >/dev/null; then
     test -r $HOME/.shell/.dircolors && eval "$(gdircolors -b $HOME/.shell/.dircolors)" || eval "$(gdircolors -b)"
 fi
 
@@ -49,7 +49,7 @@ if [[ -e "/Applications/Visual Studio Code.app" ]]; then
 fi
 
 # check if X11 is installed; if so, add it to PATH if it's not already
-if which xdpyinfo >/dev/null; then
+if command -v xdpyinfo >/dev/null; then
 	if echo $PATH | grep -q "/opt/X11/bin"; then
 		:
 	else
@@ -58,7 +58,7 @@ if which xdpyinfo >/dev/null; then
 fi
 
 # check if TeX is installed; if so, add it to PATH if it's not already
-if which tex >/dev/null; then
+if command -v tex >/dev/null; then
 	if echo $PATH | grep -q "/Library/TeX/texbin"; then
 		:
 	else

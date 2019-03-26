@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # check if Homebrew is installed and install if not
-if which brew >/dev/null; then
+if command -v brew >/dev/null; then
 	# echo "$(tput setaf 2)Homebrew already installed.$(tput setaf 7)"
 	# echo "Updating Homebrew..."
 	brew update >/dev/null
