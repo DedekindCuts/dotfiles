@@ -1,17 +1,10 @@
-[user]
-	name = Nick Larsen
-	email = nick.larsen100@gmail.com
 [core]
 	excludesfile = ~/.git-settings/.gitignore_global
 [color]
 	ui = auto
-[github]
-	user = DedekindCuts
 [diff]
     tool = vscode
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
 [fetch]
 	prune = true
-[include]
-	path = ~/.git-settings/.gitconfig.local

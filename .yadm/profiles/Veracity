@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# set yadm class
+yadm config local.class Veracity
+
+# whether to install Homebrew
+USE_HOMEBREW="false"
+
+# whether to install Conda
+USE_CONDA="true"
+
+# Conda installation script URL
+CONDA_INSTALLER="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh"
+
+# desired location for Conda installation
+CONDA_DEST="$HOME/miniconda3"
+
+# set git personal information
+git config --global user.name "Nick Larsen"
+git config --global user.email "n.larsen@veracityfa.com"
+git config --global github.user "DedekindCuts"
+
+# whether user who will be using this profile has admin (sudo) privileges
+USER_ADMIN_PRIVILEGE="false"

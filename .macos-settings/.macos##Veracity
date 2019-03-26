@@ -7,13 +7,9 @@
 osascript -e 'tell application "System Preferences" to quit'
 
 # Give option to use an admin username and password for Veracity setup
-if [[ $USER_PRIVILEGE_LEVEL == "non-admin" ]]; then
+if [[ $USER_ADMIN_PRIVILEGE == "false" ]]; then
 	echo "Some settings require admin privileges:"
 	echo -e "\tDisable the sound effects on boot"
-	echo -e "\tReveal IP address, hostname, OS version, etc. when clicking the clock in the login window"
-	echo -e "\tShow language menu in the top right corner of the boot screen"
-	echo -e "\tSet the timezone"
-	echo -e "\tShow the /Volumes folder"
 	echo "What would you like to do?"
 	select answer in "Only apply settings that do not require admin privileges" \
 		"Supply an admin username and password and apply all settings";
@@ -76,13 +72,6 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Disable automatic termination of inactive apps
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
-# Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
-if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
-	su $ADMIN_USERNAME -c 'sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName'
-elif [[ USE_SUDO == "true" ]]
-	sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-fi
-
 # Never go into computer sleep mode
 #sudo systemsetup -setcomputersleep Off > /dev/null
 
@@ -115,20 +104,6 @@ defaults write NSGlobalDomain AppleLanguages -array "en" "es"
 defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
-
-# Show language menu in the top right corner of the boot screen
-if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
-	su $ADMIN_USERNAME -c 'sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true'
-elif [[ USE_SUDO == "true" ]]
-	sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
-fi
-
-# Set the timezone; see `sudo systemsetup -listtimezones` for other values
-if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
-	su $ADMIN_USERNAME -c 'sudo systemsetup -settimezone "America/Denver" > /dev/null'
-elif [[ USE_SUDO == "true" ]]
-	sudo systemsetup -settimezone "America/Denver" > /dev/null
-fi
 
 # Stop iTunes from responding to the keyboard media keys
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
@@ -200,13 +175,6 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
-
-# Show the /Volumes folder
-if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
-	su $ADMIN_USERNAME -c 'sudo chflags nohidden /Volumes'
-elif [[ USE_SUDO == "true" ]]
-	sudo chflags nohidden /Volumes
-fi
 
 #Dock, Dashboard, and Hot Corners
 
@@ -318,10 +286,10 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
 # Install System data files & security updates
-defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+# defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
 # Automatically download apps purchased on other Macs
-defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
+# defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
