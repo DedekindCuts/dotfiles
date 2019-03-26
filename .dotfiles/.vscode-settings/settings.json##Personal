@@ -1,0 +1,39 @@
+{
+    "python.pythonPath": "~/miniconda/bin/python",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Tomorrow Night Eighties",
+    "workbench.colorCustomizations": {
+        "editor.background": "#292929"
+    },
+    "editor.tabSize": 2,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.emptySelectionClipboard": false,
+    "git.autofetch": true,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorBlinking": true,
+    "files.associations": {
+        "*.Rmd": "markdown",
+        "*.rmd": "markdown", 
+        ".gitconfig": "gitconfig"
+    },
+    "workbench.statusBar.feedback.visible": false,
+    "workbench.panel.defaultLocation": "right",
+    "r.linting.enable": true,
+    "r.linting.lineLength": true,
+    "r.linting.multipleDots": false,
+    "r.linting.snakeCase": true,
+    "material-icon-theme.folders.color": "#42a5f5",
+    "workbench.settings.openDefaultSettings": true,
+    "window.restoreFullscreen": true,
+    "window.restoreWindows": "all",
+    "window.newWindowDimensions": "maximized",
+    "terminal.integrated.confirmOnExit": true,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.suggest.localityBonus": true,
+    "editor.wordBasedSuggestions": false,
+    "gitlens.views.repositories.location": "scm",
+    "search.useGlobalIgnoreFiles": true,
+    "git.showPushSuccessNotification": true,
+    "git.fetchOnPull": true,
+    "workbench.startupEditor": "newUntitledFile"
+}

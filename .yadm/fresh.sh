@@ -20,6 +20,7 @@ select answer in "Yes" \
 do
 	case $answer in
 		"Yes" )
+			ADMIN_USERNAME=$USER
 			break;;
 		"No" )
 			read -p "Please enter an admin username or press CTRL+C to exit: " ADMIN_USERNAME

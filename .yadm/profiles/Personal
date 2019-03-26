@@ -6,5 +6,14 @@ yadm config local.class Personal
 # whether to install Homebrew
 USE_HOMEBREW="true"
 
+# whether to install Conda
+USE_CONDA="true"
+
+# Conda installation script URL
+CONDA_INSTALLER="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh"
+
+# desired location for Conda installation
+CONDA_DEST="$HOME/miniconda"
+
 # whether user who will be using this profile has admin (sudo) privileges
 USER_ADMIN_PRIVILEGE="true"

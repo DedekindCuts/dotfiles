@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# set preferred text editor
+EDITOR="code -n -w"
+GIT_EDITOR=$EDITOR
+VISUAL=$EDITOR
+
+# set location for conda installation, if necessary
+MINICONDA_PATH="$HOME/miniconda"
