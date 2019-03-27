@@ -34,7 +34,7 @@ fi
 # prompt to install any programs that must be manually installed
 . "$HOME/.dotfiles/.installs/show-manual-installs.sh"
 
-# Add applications and directories in dock-list.txt (if it exists) to Dock
+# Replace Dock with applications and directories in dock-list.txt (if it exists)
 . "$HOME/.dotfiles/.macos-settings/dock-set.sh"
 
 # source .macos file to apply system-wide settings and preferences

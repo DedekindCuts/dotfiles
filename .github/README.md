@@ -17,6 +17,7 @@ My dotfiles include:
 * [VS Code](https://code.visualstudio.com/) [settings](../.dotfiles/.vscode-settings), custom keybindings, snippets, and installed extensions
 * [R](https://www.r-project.org/) [settings](../.Rprofile)
 * a [list of programs](../.dotfiles/.installs) to install manually (in case unavailable through Homebrew, Homebrew Cask, or MAS)
+* [lists](../.dotfiles/.macos-settings/) specifying the apps and folders on my Dock
 * a [bootstrap](../.yadm/bootstrap) script for installing from the Brewfiles and applying the macOS and VS Code settings
 * [profile files](../.yadm/profiles) for specifying different dotfile configurations (see [Customization](#customization) below)
 
