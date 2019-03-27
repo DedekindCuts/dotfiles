@@ -1,12 +1,29 @@
-# List of (paths to) programs that should be added to the Dock
+# List of programs and directories that should be added to the Dock
 #
+# For apps, just put the path to the app
+# Directories should be included in the following format:
+# DIR_PATH;DISPLAYAS;SHOWAS
+# where:
+#   DIR_PATH is the directory path (use $HOME instead of ~ if needed), 
+#   DISPLAYAS is 
+#     0 to display the directory as a stack and 
+#     1 to display as a folder, and 
+#   SHOWAS is 
+#     0 for auto, 
+#     1 for fan, 
+#     2 for grid, and 
+#     3 for list
 # Lines beginning with # will be ignored
-# No need to quote app names
+# No need to quote paths
 /Applications/Launchpad.app
 /Applications/Google Chrome.app
-/Applications/Slack.app
 /Applications/Microsoft Outlook.app
+/Applications/Slack.app
 /Applications/Wrike.app
 /Applications/Visual Studio Code.app
 /Applications/Utilities/Terminal.app
 /Applications/1Password 7.app
+/Applications/System Preferences.app
+$HOME/Box Sync;1;2
+$HOME/Projects;1;2
+$HOME/Downloads;1;1
