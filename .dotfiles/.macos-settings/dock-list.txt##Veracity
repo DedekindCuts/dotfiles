@@ -1,0 +1,12 @@
+# List of (paths to) programs that should be added to the Dock
+#
+# Lines beginning with # will be ignored
+# No need to quote app names
+/Applications/Launchpad.app
+/Applications/Google Chrome.app
+/Applications/Slack.app
+/Applications/Microsoft Outlook.app
+/Applications/Wrike.app
+/Applications/Visual Studio Code.app
+/Applications/Utilities/Terminal.app
+/Applications/1Password 7.app
