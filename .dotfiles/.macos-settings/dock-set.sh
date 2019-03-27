@@ -12,9 +12,14 @@ if [[ -r "$HOME/.dotfiles/.macos-settings/dock-list.txt" ]]; then
   grep -v "^#" "$HOME/.dotfiles/.macos-settings/dock-list.txt" | while read -r LINE; do 
     read -ra SPLIT_LINE<<<"$LINE"
     if [[ ${#SPLIT_LINE[@]} == 1 ]]; then
-      sh -c "$APP_STR" -- "$LINE"
+      APP_PATH="${SPLIT_LINE[0]}"
+      APP_PATH="${APP_PATH/'~'/$HOME}" # replace any instances of ~ or $HOME in the path with the actual $HOME path
+      APP_PATH="${APP_PATH/'$HOME'/$HOME}" # replace any instances of ~ or $HOME in the path with the actual $HOME path
+      sh -c "$APP_STR" -- "$APP_PATH"
     else
       DIR_PATH="${SPLIT_LINE[0]}"
+      DIR_PATH="${DIR_PATH/'~'/$HOME}" # replace any instances of ~ or $HOME in the path with the actual $HOME path
+      DIR_PATH="${DIR_PATH/'$HOME'/$HOME}" # replace any instances of ~ or $HOME in the path with the actual $HOME path
       DISPLAYAS="${SPLIT_LINE[1]}"
       SHOWAS="${SPLIT_LINE[2]}"
       sh -c "$DIR_STR" -- "$DIR_PATH" "$DISPLAYAS" "$SHOWAS"
