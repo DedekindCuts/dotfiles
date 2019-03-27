@@ -19,8 +19,8 @@ if [[ -r "$HOME/.dotfiles/.macos-settings/dock-list.txt" ]]; then
       SHOWAS="${SPLIT_LINE[2]}"
       sh -c "$DIR_STR" -- "$DIR_PATH" "$DISPLAYAS" "$SHOWAS"
     fi
-    killall Dock
 	done
+  killall Dock
   unset IFS
 	read -n1 -rsp $'Press any key to continue.\n'
 fi
