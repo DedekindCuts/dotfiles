@@ -4,7 +4,7 @@
 # Directories should be included in the following format:
 # DIR_PATH;DISPLAYAS;SHOWAS
 # where:
-#   DIR_PATH is the directory path (use $HOME instead of ~ if needed), 
+#   DIR_PATH is the directory path (needs to be absolute; i.e. no ~ or $HOME), 
 #   DISPLAYAS is 
 #     0 to display the directory as a stack and 
 #     1 to display as a folder, and 
@@ -19,11 +19,11 @@
 /Applications/Google Chrome.app
 /Applications/Microsoft Outlook.app
 /Applications/Slack.app
-/Applications/Wrike.app
+/Applications/Wrike for Mac.app
 /Applications/Visual Studio Code.app
 /Applications/Utilities/Terminal.app
 /Applications/1Password 7.app
 /Applications/System Preferences.app
-$HOME/Box Sync;1;2
-$HOME/Projects;1;2
-$HOME/Downloads;1;1
+/Users/n.larsen/Box Sync;1;2
+/Users/n.larsen/Projects;1;2
+/Users/n.larsen/Downloads;1;1
