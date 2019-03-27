@@ -50,9 +50,9 @@ fi
 # then download and install yadm in /usr/local/bin
 echo "Installing yadm..."
 if [[ $ADMIN_USERNAME != $USER ]]; then
-	su $ADMIN_USERNAME -c 'sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm'
+	su $ADMIN_USERNAME -c 'sudo curl -fsSLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm'
 else
-	sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm
+	sudo curl -fsSLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm
 fi
 
 # finally, use yadm to set up dotfiles

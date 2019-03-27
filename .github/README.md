@@ -53,10 +53,10 @@ For a fresh install on a new computer, use the [fresh install script](../.yadm/f
 
 ```bash
 # if you're me
-bash <(curl -L https://raw.github.com/DedekindCuts/new-dotfiles/master/.yadm/fresh.sh)
+bash <(curl -fsSL https://raw.github.com/DedekindCuts/new-dotfiles/master/.yadm/fresh.sh)
 
 # if you've forked and customized this repository
-bash <(curl -L [url of fresh.sh within your forked repository])
+bash <(curl -fsSL [url of fresh.sh within your forked repository])
 ```
 
 Otherwise:

@@ -11,7 +11,7 @@ if command -v conda >/dev/null; then
 	echo "$(tput setaf 2)Conda installed and up to date.$(tput setaf 7)"
 else
 	echo "Installing Conda..."
-	curl -fsS $CONDA_INSTALLER -o $HOME/Downloads/conda.sh
+	curl -fsSL $CONDA_INSTALLER -o $HOME/Downloads/conda.sh
 	bash $HOME/Downloads/conda.sh -p $CONDA_DEST
 	rm $HOME/Downloads/conda.sh
 	echo "$(tput setaf 2)Installed.$(tput setaf 7)"
