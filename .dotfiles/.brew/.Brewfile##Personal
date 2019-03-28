@@ -16,7 +16,6 @@ brew "grep"
 brew "mas"
 brew "python"
 brew "r"
-cask "1password"
 cask "bartender"
 cask "discord"
 cask "dropbox"
@@ -27,10 +26,13 @@ cask "skim"
 cask "spectacle"
 cask "spotify"
 cask "steam"
+cask "the-unarchiver"
 cask "visual-studio-code"
 cask "vlc"
 cask "xquartz"
-mas "Airmail 2", id: 918858936
+mas "1Password 7", id: 1333542190
+mas "Airmail 3", id: 918858936
 mas "CARROT Weather", id: 993487541
 mas "Paste", id: 967805235
+mas "Pocket", id: 568494494
 mas "Wunderlist", id: 410628904
