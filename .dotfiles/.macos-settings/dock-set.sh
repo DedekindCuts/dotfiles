@@ -2,6 +2,7 @@
 
 # wipe the Dock
 defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-other -array
 
 # add apps and directories in dock-list.txt (if it exists) to Dock
 if [[ -r "$HOME/.dotfiles/.macos-settings/dock-list.txt" ]]; then
