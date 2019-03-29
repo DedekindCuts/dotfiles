@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# set preferred text editor
+EDITOR="code -n -w"
+GIT_EDITOR=$EDITOR
+VISUAL=$EDITOR
