@@ -43,7 +43,7 @@ fi
 # Disable the sound effects on boot
 if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo nvram SystemAudioVolume=" "'
-elif [[ USE_SUDO == "true" ]]
+elif [[ USE_SUDO == "true" ]]; then
 	sudo nvram SystemAudioVolume=" "
 fi
 
@@ -79,7 +79,7 @@ defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 # Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
 if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName'
-elif [[ USE_SUDO == "true" ]]
+elif [[ USE_SUDO == "true" ]]; then
 	sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 fi
 
@@ -119,14 +119,14 @@ defaults write NSGlobalDomain AppleMetricUnits -bool false
 # Show language menu in the top right corner of the boot screen
 if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true'
-elif [[ USE_SUDO == "true" ]]
+elif [[ USE_SUDO == "true" ]]; then
 	sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 fi
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo systemsetup -settimezone "America/Denver" > /dev/null'
-elif [[ USE_SUDO == "true" ]]
+elif [[ USE_SUDO == "true" ]]; then
 	sudo systemsetup -settimezone "America/Denver" > /dev/null
 fi
 
@@ -204,7 +204,7 @@ chflags nohidden ~/Library
 # Show the /Volumes folder
 if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo chflags nohidden /Volumes'
-elif [[ USE_SUDO == "true" ]]
+elif [[ USE_SUDO == "true" ]]; then
 	sudo chflags nohidden /Volumes
 fi
 

@@ -39,7 +39,7 @@ fi
 # Disable the sound effects on boot
 if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
 	su $ADMIN_USERNAME -c 'sudo nvram SystemAudioVolume=" "'
-elif [[ USE_SUDO == "true" ]]
+elif [[ USE_SUDO == "true" ]]; then
 	sudo nvram SystemAudioVolume=" "
 fi
 
