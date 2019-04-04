@@ -2,13 +2,14 @@
 
 if [[ -r "$HOME/.dotfiles/.installs/manual" ]]; then
 	IFS=";"
-	echo "$(tput setaf 3)Recommended programs to install (if not installed already):$(tput setaf 7)"
 	grep -v "^#" "$HOME/.dotfiles/.installs/manual" | while read -r LINE; do 
 		read -ra SPLIT_LINE <<<"$LINE"
 		PROGRAM_NAME="${SPLIT_LINE[0]}"
-		PROGRAM_URL="${SPLIT_LINE[1]}"
-		echo -e "\t$PROGRAM_NAME: $PROGRAM_URL"
+		PROGRAM_PATH="${SPLIT_LINE[1]}"
+		PROGRAM_URL="${SPLIT_LINE[2]}"
+		if [[ ! -e "$PROGRAM_PATH" ]]; then
+			echo -e "$PROGRAM_NAME not found at $PROGRAM_PATH\n\t$PROGRAM_URL" >> "$OUTPUT_FILEPATH"
+		fi
 	done
 	unset IFS
-	read -n1 -rsp $'Press any key to continue.\n'
 fi

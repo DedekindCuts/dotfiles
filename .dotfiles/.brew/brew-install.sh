@@ -52,115 +52,12 @@ if command -v mas >/dev/null; then
 	fi
 fi
 
-# prompt for type of install
-echo "What would you like to do?"
-select answer in "Quick update currently installed programs" \
-	"Install all programs from Brewfile" \
-	"Selectively update or install programs";
-do
-	case $answer in
-		"Quick update currently installed programs" )
-			brew upgrade
-			brew cask upgrade
-			if command -v mas >/dev/null; then
-				mas upgrade
-			fi
-			break;;
-		"Install all programs from Brewfile" )
-			brew bundle --file=$HOME/.dotfiles/.brew/.Brewfile
-			break;;
-		"Selectively update or install programs" )
-			(brew bundle list --taps --file=$HOME/.dotfiles/.brew/.Brewfile | while read -r tap ; do
-				echo "Tap $tap?"
-				select answer in "Yes" "No"
-				do
-					case $answer in
-						Yes )
-							brew tap "$tap"
-							break;;
-						No )
-							break;;
-					esac
-				done <&4
-			done) 4<&0
-			(brew bundle list --brews --file=$HOME/.dotfiles/.brew/.Brewfile | while read -r brew ; do
-				echo "Install/upgrade $brew?"
-				select answer in "Yes" "No"
-				do
-					case $answer in
-						Yes )
-							if brew ls --versions "$brew" > /dev/null; then
-								echo "Already installed; updating."
-							else
-								brew install "$brew"
-							fi
-							break;;
-						No )
-							break;;
-					esac
-				done <&4
-			done) 4<&0
-			(brew bundle list --casks --file=$HOME/.dotfiles/.brew/.Brewfile | while read -r cask ; do
-				echo "Install/upgrade $cask?"
-				select answer in "Yes" "No"
-				do
-					case $answer in
-						Yes )
-							if brew cask ls --versions "$cask" > /dev/null; then
-								echo "Already installed; updating."
-							else
-								brew cask install "$cask"
-							fi
-							break;;
-						No )
-							break;;
-					esac
-				done <&4
-			done) 4<&0
-			# if MAS is being used, install MAS apps from mas-list
-			if command -v mas >/dev/null; then
-				# silently install GNU grep if not already installed (GNU grep is required for extracting the mas ids and names from the mas_list file)
-				(if brew ls --versions grep > /dev/null; then :; else brew install grep &> /dev/null; fi
-				cat $HOME/.dotfiles/.brew/.mas-list | while read -r mas ; do
-					id="$(echo $mas | ggrep -oP '^\d+')"
-					name="$(echo $mas | ggrep -oP '(?<=\h)[\w\h\d-:]*')"
-					echo "Install/upgrade $name?"
-					select answer in "Yes" "No"
-					do
-						case $answer in
-							Yes )
-								if mas list | grep "$id" &> /dev/null; then 
-									echo "Already installed; updating."
-								else 
-									mas install "$id"
-								fi
-								break;;
-							No )
-								break;;
-						esac
-					done <&4
-				done) 4<&0
-			fi
-			# upgrade all installed brews and casks (doing them individually gives an error for brews and uninstalls and reinstalls for casks)
-			echo "Updating..."
-			brew upgrade
-			brew cask upgrade
-			if command -v mas >/dev/null; then
-				mas upgrade
-			fi
-			break;;
-	esac
-done
+# install from Brewfile
+brew bundle --file=$HOME/.dotfiles/.brew/.Brewfile
 
-# prompt for cleanup
-echo "Would you like to clean up by removing old versions of programs?"
-select answer in "Yes" "No"
-do
-	case $answer in
-		Yes )
-			brew cleanup
-			break;;
-		No )
-			break;;
-	esac
-done
+# update
+brew upgrade
+brew cask upgrade
+if command -v mas >/dev/null; then
+	mas upgrade
+fi

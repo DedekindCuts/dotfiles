@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# wipe the Dock
-defaults write com.apple.dock persistent-apps -array
-defaults write com.apple.dock persistent-other -array
-
-# add apps and directories in dock-list.txt (if it exists) to Dock
+# check if dock list exists
 if [[ -r "$HOME/.dotfiles/.macos-settings/dock-list.txt" ]]; then
+  # wipe the Dock
+  defaults write com.apple.dock persistent-apps -array
+  defaults write com.apple.dock persistent-other -array
+
+  # add apps and directories in dock list to Dock
   IFS=";"
   echo "Adding apps and directories to Dock..."
 	APP_STR='defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$1</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"'
@@ -28,5 +29,4 @@ if [[ -r "$HOME/.dotfiles/.macos-settings/dock-list.txt" ]]; then
 	done
   killall Dock
   unset IFS
-	read -n1 -rsp $'Press any key to continue.\n'
 fi

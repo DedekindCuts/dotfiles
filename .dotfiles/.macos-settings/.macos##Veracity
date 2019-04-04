@@ -6,40 +6,10 @@
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
-# Give option to use an admin username and password for Veracity setup
-if [[ $USER_ADMIN_PRIVILEGE == "false" ]]; then
-	echo "Some settings require admin privileges:"
-	echo -e "\tDisable the sound effects on boot"
-	echo "What would you like to do?"
-	select answer in "Only apply settings that do not require admin privileges" \
-		"Supply an admin username and password and apply all settings";
-	do
-		case $answer in
-			"Only apply settings that do not require admin privileges" )
-				USE_SUDO="false"
-				break;;
-			"Supply an admin username and password and apply all settings" )
-				USE_SUDO="true"
-				read -p "Please enter an admin username: " ADMIN_USERNAME
-				echo "The password for this admin username may be requested several times."
-				echo "Please enter the admin password each time it is requested."
-				break;;
-		esac
-	done
-else
-	# Ask for the administrator password upfront
-	sudo -v
-
-	# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-	USE_SUDO="true"
-fi
-
 # Disable the sound effects on boot
-if [[ $ADMIN_USERNAME != $USER ]] && [[ USE_SUDO == "true" ]]; then
+if [[ $USER_ADMIN_PRIVILEGE == "false" ]]; then
 	su $ADMIN_USERNAME -c 'sudo nvram SystemAudioVolume=" "'
-elif [[ USE_SUDO == "true" ]]; then
+else
 	sudo nvram SystemAudioVolume=" "
 fi
 
@@ -343,6 +313,3 @@ for app in "Activity Monitor" \
 	killall "${app}" &> /dev/null
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
-
-#Attempt to restart
-osascript -e 'tell app "loginwindow" to «event aevtrrst»'

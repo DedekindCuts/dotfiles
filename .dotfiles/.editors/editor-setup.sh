@@ -1,14 +1,19 @@
 #!/bin/bash
 
+echo "Setting up preferred text editor..."
+
 if [[ $PREFERRED_EDITOR == "sublime" ]]; then
   : # check that Sublime is installed and apply settings and customizations
 elif [[ $PREFERRED_EDITOR == "vscode" ]]; then
   # prompt to install VS code if it is not found
   while [[ ! -d "$HOME/Library/Application Support/Code" ]]; do
-    echo "Before continuing, VS Code must be installed."
-    echo "(https://code.visualstudio.com/download)"
-    echo "(If you just installed VS Code but still get this message, open and close VS code for the first time and try again.)"
-    read -n1 -rsp $'Press any key to continue once VS Code is installed, or CTRL+C to exit.\n'
+    if [[ -e "/Applications/Visual Studio Code.app" ]]; then
+      open "/Applications/Visual Studio Code.app"
+    else
+      echo "Before continuing, VS Code must be installed."
+      echo "(https://code.visualstudio.com/download)"
+      read -n1 -rsp $'Press any key to continue once VS Code is installed, or CTRL+C to exit.\n'
+    fi
   done
 
   # add VS Code to PATH to allow launching from the terminal (using `code`)
@@ -24,8 +29,6 @@ elif [[ $PREFERRED_EDITOR == "vscode" ]]; then
     exit
   fi
 
-  echo "Setting up VS Code..."
-
   ## apply custom VS Code settings
   ln -sfF "$HOME/.dotfiles/.editors/.vscode/snippets" "$HOME/Library/Application Support/Code/User"
   ln -sfF "$HOME/.dotfiles/.editors/.vscode/keybindings.json" "$HOME/Library/Application Support/Code/User"
@@ -34,5 +37,5 @@ elif [[ $PREFERRED_EDITOR == "vscode" ]]; then
   ## install VS Code extensions
   cat "$HOME/.dotfiles/.editors/.vscode/extensions-list.txt" | xargs -L 1 code --install-extension
 else
-  echo "Preferred editor \"$PREFERRED_EDITOR\" is not currently supported"
+  echo "Preferred text editor \"$PREFERRED_EDITOR\" is not currently supported; editor setup was not performed" >> OUTPUT_FILEPATH
 fi

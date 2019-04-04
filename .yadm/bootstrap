@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# remove output file if it already exists (from a previous run)
+OUTPUT_FILEPATH="$HOME/Desktop/dotfiles-output.txt"
+rm "$OUTPUT_FILEPATH"
+
 # prompt for install profile
 echo "Which kind of setup would you like to do?"
 select profile in $(ls $HOME/.yadm/profiles);
@@ -7,6 +11,33 @@ do
 	# get settings from profile
 	. "$HOME/.yadm/profiles/$profile"
 	break;
+done
+
+# ask whether to apply macOS settings and preferences
+echo "Would you like to apply custom macOS settings? (Requires password and restart)"
+select answer in "Yes" "No"
+do
+	case $answer in
+		Yes )
+			# check if user has admin privileges
+			if [[ $USER_ADMIN_PRIVILEGE == "true" ]]; then
+				# ask for the administrator password upfront
+				sudo -v
+
+				# Keep-alive: update existing `sudo` time stamp until this script has finished
+				while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+			else
+				# get an admin username
+				read -p "Please enter an admin username: " ADMIN_USERNAME
+				echo "The password for this admin username may be requested several times."
+				echo "Please enter the admin password each time it is requested."
+			fi
+			. "$HOME/.dotfiles/.macos-settings/.macos"
+			NEED_RESTART="true"
+			break;;
+		No )
+			break;;
+	esac
 done
 
 # check if Xcode command line tools are installed and install if not
@@ -31,21 +62,13 @@ fi
 # install preferred text editor if not already and apply custom settings
 . "$HOME/.dotfiles/.editors/.editor-setup.sh"
 
-# prompt to install any programs that must be manually installed
+# make list of any programs that must be manually installed if they are not already
 . "$HOME/.dotfiles/.installs/show-manual-installs.sh"
 
-# Replace Dock with applications and directories in dock-list.txt (if it exists)
+# replace Dock with applications and directories in dock-list.txt (if it exists)
 . "$HOME/.dotfiles/.macos-settings/dock-set.sh"
 
-# source .macos file to apply system-wide settings and preferences
-echo "Would you like to apply custom macOS settings? (Requires password and restart)"
-select answer in "Yes" "No"
-do
-	case $answer in
-		Yes )
-			. "$HOME/.dotfiles/.macos-settings/.macos"
-			break;;
-		No )
-			break;;
-	esac
-done
+# restart if necessary
+if [[ $NEED_RESTART == "true" ]]; then
+	osascript -e 'tell app "loginwindow" to «event aevtrrst»'
+fi
