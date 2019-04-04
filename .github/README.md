@@ -14,7 +14,7 @@ My dotfiles include:
 * [git settings](../.gitconfig)
 * [macOS settings](../.dotfiles/.macos-settings) (thanks to [Mathias Bynens](https://github.com/mathiasbynens/dotfiles))
 * [Homebrew](https://brew.sh) [Brewfiles](../.dotfiles/.brew) for easy installation of desired programs (including App Store apps through [MAS](https://github.com/mas-cli/mas))
-* [VS Code](https://code.visualstudio.com/) [settings](../.dotfiles/.vscode-settings), custom keybindings, snippets, and installed extensions
+* [text editor settings and customizations](../.dotfiles/.editors)
 * [R](https://www.r-project.org/) [settings](../.Rprofile)
 * a [list of programs](../.dotfiles/.installs) to install manually (in case unavailable through Homebrew, Homebrew Cask, or MAS)
 * [lists](../.dotfiles/.macos-settings/) specifying the apps and folders on my Dock

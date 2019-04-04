@@ -28,8 +28,8 @@ if [[ "$USE_CONDA" == "true" ]]; then
 	. "$HOME/.dotfiles/.conda/conda-install.sh"
 fi
 
-# install VS Code if not already and apply custom settings
-. "$HOME/.dotfiles/.vscode-settings/vscode-setup.sh"
+# install preferred text editor if not already and apply custom settings
+. "$HOME/.dotfiles/.editors/.editor-setup.sh"
 
 # prompt to install any programs that must be manually installed
 . "$HOME/.dotfiles/.installs/show-manual-installs.sh"

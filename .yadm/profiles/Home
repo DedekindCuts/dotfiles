@@ -3,6 +3,9 @@
 # set yadm class
 yadm config local.class Home
 
+# specify preferred text editor
+PREFERRED_EDITOR="vscode"
+
 # whether to install Homebrew
 USE_HOMEBREW="true"
 
