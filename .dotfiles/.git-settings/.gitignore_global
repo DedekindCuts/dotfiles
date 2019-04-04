@@ -6,9 +6,6 @@
 # Icon must end with two \r
 Icon
 
-# VS Code files
-.vscode
-
 # Thumbnails
 ._*
 
