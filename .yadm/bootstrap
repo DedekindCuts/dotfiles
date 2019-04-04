@@ -60,7 +60,7 @@ if [[ "$USE_CONDA" == "true" ]]; then
 fi
 
 # install preferred text editor if not already and apply custom settings
-. "$HOME/.dotfiles/.editors/.editor-setup.sh"
+. "$HOME/.dotfiles/.editors/editor-setup.sh"
 
 # make list of any programs that must be manually installed if they are not already
 . "$HOME/.dotfiles/.installs/show-manual-installs.sh"
