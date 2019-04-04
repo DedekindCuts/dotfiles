@@ -7,7 +7,7 @@
 # update conda if it already exists and if not, install it
 if command -v conda >/dev/null; then
   echo "Updating Conda..."
-	conda update conda >/dev/null
+	conda update -y conda >/dev/null
 	echo "$(tput setaf 2)Conda installed and up to date.$(tput setaf 7)"
 else
 	echo "Installing Conda..."
