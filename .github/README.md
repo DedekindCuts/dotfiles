@@ -10,14 +10,14 @@ You can see examples of other dotfiles [here](https://dotfiles.github.io), and e
 
 ### This repository
 My dotfiles include: 
-* [shell customizations](../.dotfiles/.shell) (including aliases, PATH settings, and a customized prompt and color scheme)
+* [shell customizations](../.dotfiles/shell) (including aliases, PATH settings, and a customized prompt and color scheme)
 * [git settings](../.gitconfig)
-* [macOS settings](../.dotfiles/.macos-settings) (thanks to [Mathias Bynens](https://github.com/mathiasbynens/dotfiles))
-* [Homebrew](https://brew.sh) [Brewfiles](../.dotfiles/.brew) for easy installation of desired programs (including App Store apps through [MAS](https://github.com/mas-cli/mas))
-* [text editor settings and customizations](../.dotfiles/.editors)
+* [macOS settings](../.dotfiles/macos-settings) (thanks to [Mathias Bynens](https://github.com/mathiasbynens/dotfiles))
+* [Homebrew](https://brew.sh) [Brewfiles](../.dotfiles/brew) for easy installation of desired programs (including App Store apps through [MAS](https://github.com/mas-cli/mas))
+* [text editor settings and customizations](../.dotfiles/editors)
 * [R](https://www.r-project.org/) [settings](../.Rprofile)
-* a [list of programs](../.dotfiles/.installs) to install manually (in case unavailable through Homebrew, Homebrew Cask, or MAS)
-* [lists](../.dotfiles/.macos-settings/) specifying the apps and folders on the Dock
+* a [list of programs](../.dotfiles/installs) to install manually (in case unavailable through Homebrew, Homebrew Cask, or MAS)
+* [lists](../.dotfiles/macos-settings/) specifying the apps and folders on the Dock
 * a [bootstrap](../.yadm/bootstrap) script for installing from the Brewfiles and applying the macOS and editor settings
 * [profile files](../.yadm/profiles) for specifying different dotfile configurations (see [Customization](#customization) below)
 
@@ -33,8 +33,8 @@ These are shell scripts that set the [yadm class](https://yadm.io/docs/alternate
 You can easily make one of these according to your own needs using the existing [profiles](../.yadm/profiles) as a template.
 
 Further customizations can be made by using yadm's classes (see [here](https://yadm.io/docs/alternates#).)
-For example, if I create a profile named "Something" in which the yadm class is set to "Something", then when I run the bootstrap script it will offer to apply the [macOS settings](../.dotfiles/.macos-settings) specified in the file ".macos##Something", if it exists. 
-If a file named for the current yadm class does not exist, or if the yadm class is not set, then it will use the file with no class name (".macos##) by default.
+For example, if I create a profile named "Something" in which the yadm class is set to "Something", then when I run the bootstrap script it will offer to apply the [macOS settings](../.dotfiles/macos-settings) specified in the file "macos##Something", if it exists. 
+If a file named for the current yadm class does not exist, or if the yadm class is not set, then it will use the file with no class name ("macos##) by default.
 
 The recommended workflow for customizing these dotfiles is as follows:
 1. fork this repository
@@ -42,8 +42,8 @@ The recommended workflow for customizing these dotfiles is as follows:
 3. create a new profile in [.yadm/profiles](../.yadm/profiles), customized to your needs
     * make sure to name the yadm class set in the new profile file (I recommend giving it the same name as the profile)
 4. customize each file as needed
-    * if there are any files of which you may want to have different versions on different systems, then create a customized version with "##" and the yadm class name associated with that profile appended to the filename (for example, I have different versions of [.gitconfig-local](../.dotfiles/.git-settings) for personal and work use)
-    * otherwise (if you want to change the file from what I have, but you will not want or need to have different versions on different systems), just edit the file as-is and don't include "##" or any class names in the filename (for example, I use the same [.bash_prompt](../.dotfiles/.shell/.bash_prompt) on all my machines)
+    * if there are any files of which you may want to have different versions on different systems, then create a customized version with "##" and the yadm class name associated with that profile appended to the filename (for example, I have different versions of [.gitconfig-local](../.dotfiles/git-settings) for personal and work use)
+    * otherwise (if you want to change the file from what I have, but you will not want or need to have different versions on different systems), just edit the file as-is and don't include "##" or any class names in the filename (for example, I use the same [.bash_prompt](../.dotfiles/shell/bash_prompt) on all my machines)
 5. commit your changes to your forked repository
 6. follow the [installation instructions](#installation) below
 
