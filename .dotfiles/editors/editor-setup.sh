@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "Setting up preferred text editor..."
+echo "Configuring preferred text editor..."
+SUCCESS="true"
 
 if [[ $PREFERRED_EDITOR == "sublime" ]]; then
   # prompt to install Sublime if it is not found
@@ -55,7 +56,17 @@ elif [[ $PREFERRED_EDITOR == "vscode" ]]; then
   ln -sfF "$HOME/.dotfiles/editors/.vscode/settings.json" "$HOME/Library/Application Support/Code/User"
 
   ## install VS Code extensions
+  echo "Installing VS Code extensions..."
   cat "$HOME/.dotfiles/editors/.vscode/extensions-list.txt" | xargs -L 1 code --install-extension
 else
+  SUCCESS="false"
+fi
+
+if [[ $SUCCESS == "true" ]]; then
+  echo "$(tput setaf 2)Preferred text editor installed and configured.$(tput setaf 7)"
+else
+  echo "$(tput setaf 1)Preferred text editor $(tput setaf 9)\"$PREFERRED_EDITOR\"$(tput setaf 1) is not currently supported; editor setup was not performed$(tput setaf 7)"
   echo "Preferred text editor \"$PREFERRED_EDITOR\" is not currently supported; editor setup was not performed" >> OUTPUT_FILEPATH
 fi
+
+unset SUCCESS

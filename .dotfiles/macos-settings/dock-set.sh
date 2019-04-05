@@ -8,7 +8,7 @@ if [[ -r "$HOME/.dotfiles/macos-settings/dock-list.txt" ]]; then
 
   # add apps and directories in dock list to Dock
   IFS=";"
-  echo "Adding apps and directories to Dock..."
+  echo "Configuring Dock..."
 	APP_STR='defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$1</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"'
   DIR_STR='defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>displayas</key><integer>$2</integer><key>file-data</key><dict><key>_CFURLString</key><string>$1</string><key>_CFURLStringType</key><integer>0</integer></dict><key>showas</key><integer>$3</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"'
   grep -v "^#" "$HOME/.dotfiles/macos-settings/dock-list.txt" | while read -r LINE; do 
@@ -29,4 +29,5 @@ if [[ -r "$HOME/.dotfiles/macos-settings/dock-list.txt" ]]; then
 	done
   killall Dock
   unset IFS
+  echo "$(tput setaf 2)Dock configured.$(tput setaf 7)"
 fi

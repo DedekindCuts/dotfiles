@@ -72,3 +72,9 @@ fi
 if [[ $NEED_RESTART == "true" ]]; then
 	osascript -e 'tell app "loginwindow" to «event aevtrrst»'
 fi
+
+# finishing message
+echo "$(tput setaf 2)Bootstrap finished.$(tput setaf 7)"
+if [[ -e $OUTPUT_FILEPATH ]]; then
+	echo "$(tput setaf 3)See $(tput setaf 11)$OUTPUT_FILEPATH$(tput setaf 3) for problems encountered during bootstrap.$(tput setaf 7)"
+fi
