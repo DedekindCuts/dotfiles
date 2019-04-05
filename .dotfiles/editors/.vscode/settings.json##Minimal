@@ -13,7 +13,7 @@
     "terminal.integrated.cursorBlinking": true,
     "files.associations": {
         "*.Rmd": "rmd",
-        "*.rmd": "rmd", 
+        "*.rmd": "rmd",
         ".gitconfig": "gitconfig"
     },
     "workbench.statusBar.feedback.visible": false,
