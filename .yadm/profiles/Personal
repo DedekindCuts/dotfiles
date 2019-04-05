@@ -20,3 +20,7 @@ CONDA_DEST="$HOME/miniconda"
 
 # whether user who will be using this profile has admin (sudo) privileges
 USER_ADMIN_PRIVILEGE="true"
+
+# name of custom terminal theme to use
+# should be named "<theme name>.terminal" and saved in .dotfiles/shell
+TERMINAL_THEME_NAME="solarized-dark"

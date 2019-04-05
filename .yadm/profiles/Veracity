@@ -21,6 +21,10 @@ CONDA_DEST="$HOME/miniconda3"
 # whether user who will be using this profile has admin (sudo) privileges
 USER_ADMIN_PRIVILEGE="false"
 
+# name of custom terminal theme to use
+# should be named "<theme name>.terminal" and saved in .dotfiles/shell
+TERMINAL_THEME_NAME="solarized-dark"
+
 # create Projects directory if it doesn't already exist
 if [[ ! -d $HOME/Projects ]]; then
   mkdir $HOME/Projects

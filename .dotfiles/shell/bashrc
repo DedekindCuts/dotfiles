@@ -11,7 +11,7 @@
 . "$HOME/.dotfiles/shell/shell-aliases"
 
 # custom prompt
-. "$HOME/.dotfiles/shell/bash_prompt"
+. "$HOME/.dotfiles/shell/bash-prompt"
 
 # enable colorized terminal output
 if command -v gdircolors >/dev/null; then
