@@ -3,3 +3,7 @@
   email = nick.larsen100@gmail.com
 [github]
   username = DedekindCuts
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE

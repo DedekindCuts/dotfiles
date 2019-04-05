@@ -2,10 +2,6 @@
 	excludesfile = ~/.dotfiles/git-settings/gitignore_global
 [color]
 	ui = auto
-[diff]
-    tool = vscode
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
 [fetch]
 	prune = true
 [include]
