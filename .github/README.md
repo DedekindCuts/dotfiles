@@ -1,5 +1,5 @@
 # dotfiles
-Personal configuration and settings files for MacOS.
+Personal configuration and settings files for macOS.
 Managed by [yadm](https://yadm.io).
 
 ## Introduction
@@ -54,7 +54,7 @@ For a fresh install on a new computer, use the [fresh install script](../.yadm/f
 
 ```bash
 # if you're me
-bash <(curl -fsSL https://raw.github.com/DedekindCuts/new-dotfiles/master/.yadm/fresh.sh)
+bash <(curl -fsSL https://raw.github.com/DedekindCuts/dotfiles/master/.yadm/fresh.sh)
 
 # if you've forked and customized this repository
 bash <(curl -fsSL [url of fresh.sh within your forked repository])
@@ -67,7 +67,7 @@ Otherwise:
 
 ```bash
 # if you're me
-yadm clone git@github.com:DedekindCuts/new-dotfiles.git --bootstrap
+yadm clone git@github.com:DedekindCuts/dotfiles.git --bootstrap
 
 # if you've forked and customized this repository
 yadm clone [url of your forked repository] --bootstrap

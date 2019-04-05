@@ -2,7 +2,7 @@
 # doesn't make any assumptions about installed programs
 
 # set the location of the dotfiles repo to clone from
-DOTFILES_REPO="https://github.com/DedekindCuts/new-dotfiles.git"
+DOTFILES_REPO="https://github.com/DedekindCuts/dotfiles.git"
 
 # first install Xcode command line tools if they aren't already
 if type xcode-select >&- && xpath=$( xcode-select --print-path ) && test -d "${xpath}" && test -x "${xpath}"; then
