@@ -42,8 +42,8 @@ The recommended workflow for customizing these dotfiles is as follows:
 3. create a new profile in [.yadm/profiles](../.yadm/profiles), customized to your needs
     * make sure to name the yadm class set in the new profile file (I recommend giving it the same name as the profile)
 4. customize each file as needed
-    * if there are any files of which you may want to have different versions on different systems, then create a customized version with "##" and the yadm class name associated with that profile appended to the filename (for example, I have different versions of [.gitconfig-local](../.dotfiles/git-settings) for personal and work use)
-    * otherwise (if you want to change the file from what I have, but you will not want or need to have different versions on different systems), just edit the file as-is and don't include "##" or any class names in the filename (for example, I use the same [.bash_prompt](../.dotfiles/shell/bash_prompt) on all my machines)
+    * if there are any files of which you may want to have different versions on different systems, then create a customized version with "##" and the yadm class name associated with that profile appended to the filename (for example, I have different versions of [gitconfig-local](../.dotfiles/git-settings) for personal and work use)
+    * otherwise (if you want to change the file from what I have, but you will not want or need to have different versions on different systems), just edit the file as-is and don't include "##" or any class names in the filename (for example, I use the same [bash_prompt](../.dotfiles/shell/bash_prompt) on all my machines)
 5. commit your changes to your forked repository
 6. follow the [installation instructions](#installation) below
 
