@@ -12,8 +12,8 @@
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.cursorBlinking": true,
     "files.associations": {
-        "*.Rmd": "markdown",
-        "*.rmd": "markdown", 
+        "*.Rmd": "rmd",
+        "*.rmd": "rmd", 
         ".gitconfig": "gitconfig"
     },
     "workbench.statusBar.feedback.visible": false,
