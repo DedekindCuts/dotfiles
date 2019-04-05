@@ -7,6 +7,8 @@ if [[ $PREFERRED_EDITOR == "sublime" ]]; then
   while [[ ! -d "$HOME/Library/Application Support/Sublime Text 3" ]]; do
     if [[ -e "/Applications/Sublime Text.app" ]]; then
       open "/Applications/Sublime Text.app"
+      sleep 10
+      killall "Sublime Text"
     else
       echo "Before continuing, Sublime Text must be installed."
       echo "(https://www.sublimetext.com/)"
@@ -25,6 +27,8 @@ elif [[ $PREFERRED_EDITOR == "vscode" ]]; then
   while [[ ! -d "$HOME/Library/Application Support/Code" ]]; do
     if [[ -e "/Applications/Visual Studio Code.app" ]]; then
       open "/Applications/Visual Studio Code.app"
+      sleep 10
+      killall "Electron"
     else
       echo "Before continuing, VS Code must be installed."
       echo "(https://code.visualstudio.com/download)"
