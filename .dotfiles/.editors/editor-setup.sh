@@ -3,12 +3,23 @@
 echo "Setting up preferred text editor..."
 
 if [[ $PREFERRED_EDITOR == "sublime" ]]; then
-  #install Sublime Text settings
-  rm -r "$HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User"
-  ln -sfF "$HOME/.dotfiles/.editors/Sublime/User" "$HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages"
+  # prompt to install Sublime if it is not found
+  while [[ ! -d "$HOME/Library/Application Support/Sublime Text 3" ]]; do
+    if [[ -e "/Applications/Sublime Text.app" ]]; then
+      open "/Applications/Sublime Text.app"
+    else
+      echo "Before continuing, Sublime Text must be installed."
+      echo "(https://www.sublimetext.com/)"
+      read -n1 -rsp $'Press any key to continue once Sublime is installed, or CTRL+C to exit.\n'
+    fi
+  done
 
   #Enable opening Sublime Text from the terminal
   ln -sfF "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" "/usr/local/bin/sublime"
+
+  #install Sublime Text settings
+  rm -r "$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+  ln -sfF "$HOME/.dotfiles/.editors/Sublime/User" "$HOME/Library/Application Support/Sublime Text 3/Packages"
 elif [[ $PREFERRED_EDITOR == "vscode" ]]; then
   # prompt to install VS code if it is not found
   while [[ ! -d "$HOME/Library/Application Support/Code" ]]; do
