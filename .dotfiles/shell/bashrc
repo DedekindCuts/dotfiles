@@ -5,17 +5,17 @@
 #
 
 # set environment variables
-. "$HOME/.dotfiles/.shell/.shell-env"
+. "$HOME/.dotfiles/shell/shell-env"
 
 # set custom aliases
-. "$HOME/.dotfiles/.shell/.shell-aliases"
+. "$HOME/.dotfiles/shell/shell-aliases"
 
 # custom prompt
-. "$HOME/.dotfiles/.shell/.bash_prompt"
+. "$HOME/.dotfiles/shell/bash_prompt"
 
 # enable colorized terminal output
 if command -v gdircolors >/dev/null; then
-    test -r "$HOME/.dotfiles/.shell/.dircolors" && eval "$(gdircolors -b $HOME/.dotfiles/.shell/.dircolors)" || eval "$(gdircolors -b)"
+    test -r "$HOME/.dotfiles/shell/dircolors" && eval "$(gdircolors -b $HOME/.dotfiles/shell/dircolors)" || eval "$(gdircolors -b)"
 fi
 
 # Store multiline commands as one line.
@@ -105,4 +105,4 @@ fi
 #
 
 # run local bashrc if there is one
-test -r "$HOME/.dotfiles/.shell/.bashrc-local" && . "$HOME/.dotfiles/.shell/.bashrc-local"
+test -r "$HOME/.dotfiles/shell/bashrc-local" && . "$HOME/.dotfiles/shell/bashrc-local"

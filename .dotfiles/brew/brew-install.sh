@@ -53,7 +53,7 @@ if command -v mas >/dev/null; then
 fi
 
 # install from Brewfile
-brew bundle --file=$HOME/.dotfiles/.brew/.Brewfile
+brew bundle --file="$HOME/.dotfiles/brew/Brewfile"
 
 # update
 brew upgrade

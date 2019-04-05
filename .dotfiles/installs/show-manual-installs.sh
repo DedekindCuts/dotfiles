@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [[ -r "$HOME/.dotfiles/.installs/manual" ]]; then
+if [[ -r "$HOME/.dotfiles/installs/manual" ]]; then
 	IFS=";"
-	grep -v "^#" "$HOME/.dotfiles/.installs/manual" | while read -r LINE; do 
+	grep -v "^#" "$HOME/.dotfiles/installs/manual" | while read -r LINE; do 
 		read -ra SPLIT_LINE <<<"$LINE"
 		PROGRAM_NAME="${SPLIT_LINE[0]}"
 		PROGRAM_PATH="${SPLIT_LINE[1]}"

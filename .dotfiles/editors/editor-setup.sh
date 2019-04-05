@@ -19,7 +19,7 @@ if [[ $PREFERRED_EDITOR == "sublime" ]]; then
 
   #install Sublime Text settings
   rm -r "$HOME/Library/Application Support/Sublime Text 3/Packages/User"
-  ln -sfF "$HOME/.dotfiles/.editors/Sublime/User" "$HOME/Library/Application Support/Sublime Text 3/Packages"
+  ln -sfF "$HOME/.dotfiles/editors/Sublime/User" "$HOME/Library/Application Support/Sublime Text 3/Packages"
 elif [[ $PREFERRED_EDITOR == "vscode" ]]; then
   # prompt to install VS code if it is not found
   while [[ ! -d "$HOME/Library/Application Support/Code" ]]; do
@@ -46,12 +46,12 @@ elif [[ $PREFERRED_EDITOR == "vscode" ]]; then
   fi
 
   ## apply custom VS Code settings
-  ln -sfF "$HOME/.dotfiles/.editors/.vscode/snippets" "$HOME/Library/Application Support/Code/User"
-  ln -sfF "$HOME/.dotfiles/.editors/.vscode/keybindings.json" "$HOME/Library/Application Support/Code/User"
-  ln -sfF "$HOME/.dotfiles/.editors/.vscode/settings.json" "$HOME/Library/Application Support/Code/User"
+  ln -sfF "$HOME/.dotfiles/editors/.vscode/snippets" "$HOME/Library/Application Support/Code/User"
+  ln -sfF "$HOME/.dotfiles/editors/.vscode/keybindings.json" "$HOME/Library/Application Support/Code/User"
+  ln -sfF "$HOME/.dotfiles/editors/.vscode/settings.json" "$HOME/Library/Application Support/Code/User"
 
   ## install VS Code extensions
-  cat "$HOME/.dotfiles/.editors/.vscode/extensions-list.txt" | xargs -L 1 code --install-extension
+  cat "$HOME/.dotfiles/editors/.vscode/extensions-list.txt" | xargs -L 1 code --install-extension
 else
   echo "Preferred text editor \"$PREFERRED_EDITOR\" is not currently supported; editor setup was not performed" >> OUTPUT_FILEPATH
 fi
