@@ -32,7 +32,7 @@ do
 				echo "The password for this admin username may be requested several times."
 				echo "Please enter the admin password each time it is requested."
 			fi
-			. "$HOME/.dotfiles/.macos-settings/.macos"
+			. "$HOME/.dotfiles/macos-settings/macos"
 			NEED_RESTART="true"
 			break;;
 		No )
@@ -51,22 +51,22 @@ fi
 
 # install/update Homebrew and programs from Brewfile if desired
 if [[ "$USE_HOMEBREW" == "true" ]]; then
-	. "$HOME/.dotfiles/.brew/brew-install.sh"
+	. "$HOME/.dotfiles/brew/brew-install.sh"
 fi
 
 # install Conda if desired
 if [[ "$USE_CONDA" == "true" ]]; then
-	. "$HOME/.dotfiles/.conda/conda-install.sh"
+	. "$HOME/.dotfiles/conda/conda-install.sh"
 fi
 
 # install preferred text editor if not already and apply custom settings
-. "$HOME/.dotfiles/.editors/editor-setup.sh"
+. "$HOME/.dotfiles/editors/editor-setup.sh"
 
 # make list of any programs that must be manually installed if they are not already
-. "$HOME/.dotfiles/.installs/show-manual-installs.sh"
+. "$HOME/.dotfiles/installs/show-manual-installs.sh"
 
 # replace Dock with applications and directories in dock-list.txt (if it exists)
-. "$HOME/.dotfiles/.macos-settings/dock-set.sh"
+. "$HOME/.dotfiles/macos-settings/dock-set.sh"
 
 # restart if necessary
 if [[ $NEED_RESTART == "true" ]]; then

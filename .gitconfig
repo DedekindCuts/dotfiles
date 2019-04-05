@@ -1,5 +1,5 @@
 [core]
-	excludesfile = ~/.dotfiles/.git-settings/.gitignore_global
+	excludesfile = ~/.dotfiles/git-settings/gitignore_global
 [color]
 	ui = auto
 [diff]
@@ -9,4 +9,4 @@
 [fetch]
 	prune = true
 [include]
-	path = ~/.dotfiles/.git-settings/.gitconfig-local
+	path = ~/.dotfiles/git-settings/gitconfig-local
