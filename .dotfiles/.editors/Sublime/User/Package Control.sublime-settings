@@ -1,0 +1,16 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"MarkdownPreview",
+		"nRepeat",
+		"Package Control",
+		"R-snippets",
+		"SendText",
+		"Theme - Flatgrammer",
+		"Tomorrow Color Schemes"
+	]
+}

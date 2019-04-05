@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+\begin{claim}
+	$0
+\end{claim}
+]]></content>
+	<tabTrigger>claim</tabTrigger>
+	<scope>text.tex.latex</scope>
+</snippet>

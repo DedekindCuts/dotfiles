@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+\begin{itemize}
+	$0
+\end{itemize}
+]]></content>
+	<tabTrigger>itemize</tabTrigger>
+	<scope>text.tex.latex</scope>
+</snippet>

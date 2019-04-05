@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+\begin{problem}[${1:#}]
+
+	${0:question}
+
+\end{problem}
+\begin{${2:answer}}
+
+	
+
+\end{${2:answer}}
+]]></content>
+	<tabTrigger>problem</tabTrigger>
+	<scope>text.tex.latex</scope>
+</snippet>
