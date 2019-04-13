@@ -25,5 +25,5 @@ cask "vlc"
 cask "xquartz"
 mas "1Password 7", id: 1333542190
 mas "Pages", id: 409201541
-mas "Paprika Recipe Manager 3", id: 1303222628
+mas "Paprika Recipe Manager", id: 451907568
 mas "Wunderlist", id: 410628904
