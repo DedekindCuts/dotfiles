@@ -1,0 +1,26 @@
+# List of programs and directories that should be added to the Dock
+#
+# For apps, just put the path to the app
+# Directories should be included in the following format:
+# DIR_PATH;DISPLAYAS;SHOWAS
+# where:
+#   DIR_PATH is the directory path, 
+#   DISPLAYAS is 
+#     0 to display the directory as a stack and 
+#     1 to display as a folder, and 
+#   SHOWAS is 
+#     0 for auto, 
+#     1 for fan, 
+#     2 for grid, and 
+#     3 for list
+# Lines beginning with # will be ignored
+# No need to quote paths
+/Applications/Launchpad.app
+/Applications/Messages.app
+/Applications/FaceTime.app
+/Applications/Firefox.app
+/Applications/Wunderlist.app
+/Applications/Paprika Recipe Manager.app
+/Applications/System Preferences.app
+$HOME/Downloads;0;1
+$HOME/Dropbox;1;2

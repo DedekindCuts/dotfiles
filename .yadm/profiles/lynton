@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # set yadm class
-yadm config local.class Minimal
+yadm config local.class lynton
 
 # specify preferred text editor
 PREFERRED_EDITOR="vscode"

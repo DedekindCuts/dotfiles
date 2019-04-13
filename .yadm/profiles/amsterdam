@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # set yadm class
-yadm config local.class Personal
+yadm config local.class amsterdam
 
 # specify preferred text editor
 PREFERRED_EDITOR="vscode"
