@@ -20,7 +20,7 @@ try(setOutputColors(normal = 39, const = 124, true = 34, verbose = FALSE), silen
 options(prompt = "R> ")
 
 #set the default number of digits to 4
-options(digits = 4)
+#options(digits = 4)
 
 #hide stars for statistical significance
 options(show.signif.stars = FALSE)

@@ -7,3 +7,6 @@ VISUAL=$EDITOR
 
 # set location for conda installation, if necessary
 MINICONDA_PATH="$HOME/miniconda3"
+
+# set location for R installation
+RSTUDIO_WHICH_R="$MINICONDA_PATH/bin/R"

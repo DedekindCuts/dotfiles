@@ -1,33 +1,61 @@
 {
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Tomorrow Night Eighties",
-    "workbench.colorCustomizations": {
-        "editor.background": "#292929"
-    },
-    "editor.tabSize": 2,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.emptySelectionClipboard": false,
-    "git.autofetch": true,
-    "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.cursorBlinking": true,
-    "files.associations": {
-        "*.Rmd": "rmd",
-        "*.rmd": "rmd",
-        ".gitconfig": "gitconfig"
-    },
-    "workbench.statusBar.feedback.visible": false,
-    "workbench.panel.defaultLocation": "right",
-    "material-icon-theme.folders.color": "#42a5f5",
-    "workbench.settings.openDefaultSettings": true,
-    "window.restoreFullscreen": true,
-    "window.restoreWindows": "all",
-    "window.newWindowDimensions": "maximized",
-    "terminal.integrated.confirmOnExit": true,
-    "editor.acceptSuggestionOnEnter": "smart",
-    "editor.suggest.localityBonus": true,
-    "editor.wordBasedSuggestions": false,
-    "search.useGlobalIgnoreFiles": true,
-    "git.showPushSuccessNotification": true,
-    "git.fetchOnPull": true,
-    "workbench.startupEditor": "newUntitledFile"
+  "breadcrumbs.enabled": false,
+  "dayNightThemeSwitcher.dayTheme": "Tomorrow",
+  "dayNightThemeSwitcher.nightTheme": "Tomorrow Night Eighties",
+  "dayNightThemeSwitcher.dayThemeCustomizations": {
+
+  }, 
+  "dayNightThemeSwitcher.nightThemeCustomizations": {
+
+  }, 
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.autoClosingOvertype": "always",
+  "editor.emptySelectionClipboard": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.suggest.localityBonus": true,
+  "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment", 
+        "settings": {
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  },
+  "editor.wordBasedSuggestions": false,
+  "files.associations": {
+    ".gitconfig": "gitconfig",
+    "*.rmd": "markdown",
+    "*.Rmd": "rmd"
+  },
+  "git.autofetch": true,
+  "git.fetchOnPull": true,
+  "git.showPushSuccessNotification": true,
+  "gitlens.views.repositories.location": "scm",
+  "material-icon-theme.folders.color": "#42a5f5",
+  "r.linting.camelCase": true,
+  "r.linting.enable": true,
+  "r.linting.lineLength": true,
+  "r.linting.nameLength": true,
+  "r.linting.snakeCase": true,
+  "r.rterm.mac": "/Users/n.larsen/miniconda3/bin/R", 
+  "search.useGlobalIgnoreFiles": true,
+  "terminal.integrated.confirmOnExit": true,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "window.newWindowDimensions": "maximized",
+  "window.restoreFullscreen": true,
+  "window.restoreWindows": "all",
+  "window.zoomLevel": 0,
+  "workbench.colorCustomizations": {
+    "terminal.background": "#0E2A34", 
+    "terminal.foreground": "#EDEDEE"
+  },
+  "workbench.colorTheme": "Tomorrow",
+  "workbench.panel.defaultLocation": "right",
+  "workbench.settings.openDefaultSettings": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.statusBar.feedback.visible": false
 }
