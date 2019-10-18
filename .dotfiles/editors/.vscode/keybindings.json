@@ -22,5 +22,10 @@
   {
     "key": "ctrl+shift+`",
     "command": "-workbench.action.terminal.new"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "workbench.action.terminal.runSelectedText", 
+    "when": "editorTextFocus && editorLangId == 'python'"
   }
 ]
