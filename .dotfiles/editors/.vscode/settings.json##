@@ -50,12 +50,13 @@
   "window.restoreWindows": "all",
   "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
-    "terminal.background": "#0E2A34", 
-    "terminal.foreground": "#EDEDEE"
+    "terminal.background": "#082a35", 
+    "terminal.foreground": "#ededed"
   },
   "workbench.colorTheme": "Tomorrow",
   "workbench.panel.defaultLocation": "right",
   "workbench.settings.openDefaultSettings": true,
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.feedback.visible": false
+  "workbench.statusBar.feedback.visible": false,
+  "python.pythonPath": "~/miniconda3/bin/python"
 }
