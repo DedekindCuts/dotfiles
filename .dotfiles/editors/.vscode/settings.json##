@@ -3,10 +3,12 @@
   "dayNightThemeSwitcher.dayTheme": "Tomorrow",
   "dayNightThemeSwitcher.nightTheme": "Tomorrow Night Eighties",
   "dayNightThemeSwitcher.dayThemeCustomizations": {
-
+    "terminal.background": "#082a35",
+    "terminal.foreground": "#ededed" 
   }, 
   "dayNightThemeSwitcher.nightThemeCustomizations": {
-
+    "terminal.background": "#082a35",
+    "terminal.foreground": "#ededed" 
   }, 
   "editor.acceptSuggestionOnEnter": "smart",
   "editor.autoClosingOvertype": "always",
@@ -50,7 +52,7 @@
   "window.restoreWindows": "all",
   "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
-    "terminal.background": "#082a35", 
+    "terminal.background": "#082a35",
     "terminal.foreground": "#ededed"
   },
   "workbench.colorTheme": "Tomorrow",

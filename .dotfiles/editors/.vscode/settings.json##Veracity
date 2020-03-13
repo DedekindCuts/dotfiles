@@ -3,10 +3,12 @@
   "dayNightThemeSwitcher.dayTheme": "Tomorrow",
   "dayNightThemeSwitcher.nightTheme": "Tomorrow Night Eighties",
   "dayNightThemeSwitcher.dayThemeCustomizations": {
-
+    "terminal.background": "#082a35",
+    "terminal.foreground": "#ededed" 
   }, 
   "dayNightThemeSwitcher.nightThemeCustomizations": {
-
+    "terminal.background": "#082a35",
+    "terminal.foreground": "#ededed" 
   }, 
   "editor.acceptSuggestionOnEnter": "smart",
   "editor.autoClosingOvertype": "always",
@@ -42,15 +44,18 @@
   "r.linting.snakeCase": true,
   "r.rterm.mac": "/Users/n.larsen/miniconda3/bin/R", 
   "search.useGlobalIgnoreFiles": true,
+  "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.confirmOnExit": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.fontFamily": "MesloLGS NF", 
+  "terminal.integrated.shell.osx": "/bin/zsh",
   "window.newWindowDimensions": "maximized",
   "window.restoreFullscreen": true,
   "window.restoreWindows": "all",
   "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
-    "terminal.background": "#082a35", 
+    "terminal.background": "#082a35",
     "terminal.foreground": "#ededed"
   },
   "workbench.colorTheme": "Tomorrow",
