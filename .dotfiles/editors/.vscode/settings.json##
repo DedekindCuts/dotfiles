@@ -14,6 +14,7 @@
   "editor.autoClosingOvertype": "always",
   "editor.emptySelectionClipboard": false,
   "editor.multiCursorModifier": "ctrlCmd",
+  "editor.rulers": [79], 
   "editor.suggest.localityBonus": true,
   "editor.tabSize": 2,
   "editor.tokenColorCustomizations": {
@@ -47,6 +48,8 @@
   "terminal.integrated.confirmOnExit": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.shell.osx": "/bin/zsh", 
   "window.newWindowDimensions": "maximized",
   "window.restoreFullscreen": true,
   "window.restoreWindows": "all",
@@ -60,5 +63,7 @@
   "workbench.settings.openDefaultSettings": true,
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.feedback.visible": false,
-  "python.pythonPath": "~/miniconda3/bin/python"
+  "python.defaultInterpreterPath": "~/miniconda3/bin/python",
+  "todo-tree.tree.showScanModeButton": false,
+  "python.languageServer": "Pylance"
 }

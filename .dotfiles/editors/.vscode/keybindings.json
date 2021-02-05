@@ -1,4 +1,4 @@
-// Place your key bindings in this file to override the defaultsauto[]
+// Place your key bindings in this file to override the defaults
 [
   {
     "key": "shift+cmd+r",
@@ -9,6 +9,16 @@
     "key": "shift+cmd+s",
     "command": "-r.runSource",
     "when": "editorTextFocus && editorLangId == 'r'"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
   },
   {
     "key": "shift+cmd+r",
