@@ -4,6 +4,11 @@
 
 echo "Applying macOS preferences..."
 
+# suppress 'last login' message in terminal windows
+if [[ ! -f '.hushlogin' ]]; then
+	touch .hushlogin
+fi
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -177,6 +182,9 @@ else
 fi
 
 #Dock, Dashboard, and Hot Corners
+
+# Don't show recent apps in Dock
+defaults write com.apple.dock show-recents -bool false
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
