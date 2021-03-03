@@ -14,6 +14,7 @@
   "editor.autoClosingOvertype": "always",
   "editor.emptySelectionClipboard": false,
   "editor.multiCursorModifier": "ctrlCmd",
+  "editor.rulers": [79], 
   "editor.suggest.localityBonus": true,
   "editor.tabSize": 2,
   "editor.tokenColorCustomizations": {
@@ -63,5 +64,9 @@
   "workbench.settings.openDefaultSettings": true,
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.feedback.visible": false,
-  "python.pythonPath": "~/miniconda3/bin/python"
+  "python.pythonPath": "~/miniconda3/bin/python",
+  "terminal.integrated.inheritEnv": true,
+  "wikitext.host": "en.wikipedia.org",
+  "todo-tree.tree.showScanModeButton": false,
+  "python.languageServer": "Pylance"
 }
