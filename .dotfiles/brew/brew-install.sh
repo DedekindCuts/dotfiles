@@ -27,6 +27,9 @@ else
 	echo "$(tput setaf 2)Installed.$(tput setaf 7)"
 fi
 
+# install from Brewfile
+brew bundle --file="$HOME/.dotfiles/brew/Brewfile"
+
 # sign in to App Store
 if ! mas account >/dev/null; then
     echo "Please open App Store and sign in using your Apple ID ...."
@@ -34,9 +37,6 @@ if ! mas account >/dev/null; then
         sleep 5
     done
 fi
-
-# install from Brewfile
-brew bundle --file="$HOME/.dotfiles/brew/Brewfile"
 
 # update
 brew upgrade
