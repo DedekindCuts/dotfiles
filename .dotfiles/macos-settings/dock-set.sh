@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # check if dock list exists
 if [[ -r "$HOME/.dotfiles/macos-settings/dock-list.txt" ]]; then

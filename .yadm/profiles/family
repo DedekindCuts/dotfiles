@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# set yadm class
+yadm config local.class family
+
+# whether to use Conda
+USE_CONDA="true"
+
+# Conda installation script URL
+CONDA_INSTALLER="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh"
+
+# desired location for Conda installation
+CONDA_DEST="$HOME/miniconda"

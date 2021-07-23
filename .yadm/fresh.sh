@@ -13,23 +13,6 @@ else
 	echo "$(tput setaf 2)Installed.$(tput setaf 7)"
 fi
 
-# give option to switch to an admin user
-echo "Does the current user have admin privileges?"
-select answer in "Yes" \
-	"No";
-do
-	case $answer in
-		"Yes" )
-			ADMIN_USERNAME=$USER
-			break;;
-		"No" )
-			read -p "Please enter an admin username or press CTRL+C to exit: " ADMIN_USERNAME
-			echo "The password for this admin username may be requested several times."
-			echo "Please enter the admin password each time it is requested."
-			break;;
-	esac
-done
-
 # create /usr/local/bin if it doesn't exist already
 if [[ ! -d /usr/local/bin ]]; then
 	echo "Creating /usr/local/bin..."

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # remove output file if it already exists (from a previous run)
 OUTPUT_FILEPATH="$HOME/Desktop/dotfiles-output.txt"
@@ -19,19 +19,11 @@ select answer in "Yes" "No"
 do
 	case $answer in
 		Yes )
-			# check if user has admin privileges
-			if [[ $USER_ADMIN_PRIVILEGE == "true" ]]; then
-				# ask for the administrator password upfront
-				sudo -v
+			# ask for the administrator password upfront
+			sudo -v
 
-				# Keep-alive: update existing `sudo` time stamp until this script has finished
-				while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-			else
-				# get an admin username
-				read -p "Please enter an admin username: " ADMIN_USERNAME
-				echo "The password for this admin username may be requested several times."
-				echo "Please enter the admin password each time it is requested."
-			fi
+			# Keep-alive: update existing `sudo` time stamp until this script has finished
+			while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 			. "$HOME/.dotfiles/macos-settings/macos"
 			NEED_RESTART="true"
 			break;;
@@ -49,21 +41,48 @@ else
 	echo "$(tput setaf 2)Installed.$(tput setaf 7)"
 fi
 
-# install/update Homebrew and programs from Brewfile if desired
-if [[ "$USE_HOMEBREW" == "true" ]]; then
-	. "$HOME/.dotfiles/brew/brew-install.sh"
+# check if zsh is default shell; switch if not
+if [[ $(dscl . -read ~ UserShell | sed 's/UserShell: //') != "/bin/zsh" ]]; then 
+	chsh -s /bin/zsh
 fi
 
-# install Conda if desired
-if [[ "$USE_CONDA" == "true" ]]; then
-	. "$HOME/.dotfiles/conda/conda-install.sh"
+# install oh-my-zsh if necessary
+if [[ ! -d $HOME/.oh-my-zsh ]]; then
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-# install preferred text editor if not already and apply custom settings
-. "$HOME/.dotfiles/editors/editor-setup.sh"
+# install and configure powerlevel10k if necessary
+if [[ ! -d $HOME/.oh-my-zsh/custom/themes/powerlevel10k ]]; then
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+fi
 
-# make list of any programs that must be manually installed if they are not already
-. "$HOME/.dotfiles/installs/show-manual-installs.sh"
+# install/update Homebrew and programs from Brewfile
+. "$HOME/.dotfiles/brew/brew-install.sh"
+
+# tell iTerm2 to use saved preferences
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.dotfiles/iterm2"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+
+# install/update conda if desired
+if [[ $USE_CONDA == "true" ]]; then
+	# TODO: check if Conda is installed by looking for appropriate folders, not 
+	# just `command -v conda`, since that will fail if for some reason conda has 
+	# not been added to PATH
+
+	# update conda if it already exists and if not, install it
+	if command -v conda >/dev/null; then
+		echo "Updating Conda..."
+		conda update -y conda >/dev/null
+		echo "$(tput setaf 2)Conda installed and up to date.$(tput setaf 7)"
+	else
+		echo "Installing Conda..."
+		curl -fsSL $CONDA_INSTALLER -o $HOME/Downloads/conda.sh
+		. $HOME/Downloads/conda.sh -p $CONDA_DEST
+		rm $HOME/Downloads/conda.sh
+		conda init zsh
+		echo "$(tput setaf 2)Installed.$(tput setaf 7)"
+	fi
+fi
 
 # replace Dock with applications and directories in dock-list.txt (if it exists)
 . "$HOME/.dotfiles/macos-settings/dock-set.sh"

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# set yadm class
+yadm config local.class shanelle
+
+# whether to use Conda
+USE_CONDA="false"

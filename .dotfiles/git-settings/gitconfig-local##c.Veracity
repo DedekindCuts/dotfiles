@@ -1,9 +1,0 @@
-[user]
-	name = Nick Larsen
-  email = n.larsen@veracityfa.com
-[github]
-  username = DedekindCuts
-[diff]
-    tool = vscode
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
