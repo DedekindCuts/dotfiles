@@ -14,11 +14,7 @@ fi
 osascript -e 'tell application "System Preferences" to quit'
 
 # Disable the sound effects on boot
-if [[ $USER_ADMIN_PRIVILEGE == "false"]]; then
-	su $ADMIN_USERNAME -c 'sudo nvram SystemAudioVolume=" "'
-else
-	sudo nvram SystemAudioVolume=" "
-fi
+sudo nvram SystemAudioVolume=" "
 
 # Disable chime when power cable is connected
 defaults write com.apple.PowerChime ChimeOnNoHardware -bool true; killall PowerChime
@@ -50,11 +46,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
-if [[ $USER_ADMIN_PRIVILEGE == "false"]]; then
-	su $ADMIN_USERNAME -c 'sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName'
-else
-	sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-fi
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # Never go into computer sleep mode
 #sudo systemsetup -setcomputersleep Off > /dev/null
@@ -90,18 +82,10 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
 
 # Show language menu in the top right corner of the boot screen
-if [[ $USER_ADMIN_PRIVILEGE == "false"]]; then
-	su $ADMIN_USERNAME -c 'sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true'
-else
-	sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
-fi
+sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-if [[ $USER_ADMIN_PRIVILEGE == "false"]]; then
-	su $ADMIN_USERNAME -c 'sudo systemsetup -settimezone "America/Denver" > /dev/null'
-else
-	sudo systemsetup -settimezone "America/Denver" > /dev/null
-fi
+sudo systemsetup -settimezone "America/Denver" > /dev/null
 
 # Stop iTunes from responding to the keyboard media keys
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
@@ -179,11 +163,7 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 chflags nohidden ~/Library
 
 # Show the /Volumes folder
-if [[ $USER_ADMIN_PRIVILEGE == "false"]]; then
-	su $ADMIN_USERNAME -c 'sudo chflags nohidden /Volumes'
-else
-	sudo chflags nohidden /Volumes
-fi
+sudo chflags nohidden /Volumes
 
 #Dock, Dashboard, and Hot Corners
 
