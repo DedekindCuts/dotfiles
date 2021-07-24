@@ -56,6 +56,12 @@ if [[ ! -d $HOME/.oh-my-zsh/custom/themes/powerlevel10k ]]; then
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
 
+# replace existing .zshrc with one from .dotfiles/shell
+if [[ -f $HOME/.zshrc ]]; then
+	mv $HOME/.zshrc $HOME/.zshrc-old
+fi
+ln -s $HOME/.dotfiles/shell/zshrc $HOME/.zshrc
+
 # install/update Homebrew and programs from Brewfile
 . "$HOME/.dotfiles/brew/brew-install.sh"
 
@@ -77,7 +83,7 @@ if [[ $USE_CONDA == "true" ]]; then
 	else
 		echo "Installing Conda..."
 		curl -fsSL $CONDA_INSTALLER -o $HOME/Downloads/conda.sh
-		. $HOME/Downloads/conda.sh -p $CONDA_DEST
+		sh $HOME/Downloads/conda.sh -p $CONDA_DEST
 		rm $HOME/Downloads/conda.sh
 		conda init zsh
 		echo "$(tput setaf 2)Installed.$(tput setaf 7)"

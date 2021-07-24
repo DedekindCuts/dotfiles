@@ -40,7 +40,6 @@ fi
 
 # update
 brew upgrade
-brew cask upgrade
 if command -v mas >/dev/null; then
 	mas upgrade
 fi

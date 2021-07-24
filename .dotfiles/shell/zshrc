@@ -116,6 +116,6 @@ GIT_EDITOR=$EDITOR
 VISUAL=$EDITOR
 
 # apply profile-specific settings if desired
-if [ -f "$HOME/dotfiles/shell/zshrc" ]; then
-  . "$HOME/dotfiles/shell/zshrc"
+if [ -f "$HOME/dotfiles/shell/zshrc-local" ]; then
+  . "$HOME/dotfiles/shell/zshrc-local"
 fi
